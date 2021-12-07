@@ -1,0 +1,4 @@
+class UserBudgetsController < ApplicationController
+
+
+end

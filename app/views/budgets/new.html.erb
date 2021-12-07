@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div class="row justify-content-center mb-3">
+          <div class="card mb-4">
+            <div class="card-body">
+                <div class="h2 mt-3">Créer votre budget</div>
+                  <div class="info-log">
+                    <%= simple_form_for [@budget] do |f| %>
+                      <%= f.input :name, placeholder: "Quel est le nom du partage?", label: "Nom du partage" %>
+                      <%= f.input :participants, collection: @participants, checked: "", legend_tag: true, as: :check_boxes, label: "Qui participe ?" %>
+
+                      <div class="center">
+                          <%= f.button :submit, "Créer votre partage", class:"btn-primary" %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+            </div>
+            <%=link_to " < retour", root_path %>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

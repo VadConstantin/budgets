@@ -10,10 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_103149) do
+ActiveRecord::Schema.define(version: 2021_12_07_140538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "budgets", force: :cascade do |t|
+    t.string "name"
+    t.integer "total_cents"
+    t.integer "balance_cents"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "montant_cents"
+    t.string "commentaire"
+    t.bigint "budgets_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["budgets_id"], name: "index_payments_on_budgets_id"
+  end
+
+  create_table "user_budgets", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "budget_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["budget_id"], name: "index_user_budgets_on_budget_id"
+    t.index ["user_id"], name: "index_user_budgets_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +49,12 @@ ActiveRecord::Schema.define(version: 2021_12_07_103149) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "payments", "budgets", column: "budgets_id"
+  add_foreign_key "user_budgets", "budgets"
+  add_foreign_key "user_budgets", "users"
 end

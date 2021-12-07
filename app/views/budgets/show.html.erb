@@ -1,0 +1,35 @@
+<div class="container">
+  <h3 class="mt-4"><%=@budget.name%></h3>
+  <br>
+
+    <%# link_to "ajouter une transaction", new_partage_transact_path(@budget.id) %>
+
+
+  <br>
+  Total: <%=@budget.total_cents%> €
+  <br>
+
+
+  <br>
+  <br>
+  participants : <%= User.where(id: @partage.participants.chars)[0].name%>, <%= User.where(id: @partage.participants.chars)[1].name %>
+
+  <br>
+  <br>
+  Dernières transactions :
+  <ul>
+    <% @transacts.order(id: :desc).each do |transact| %>
+      <div class="card pt-4">
+
+        <li><strong><%=transact.payeurs%></strong> a payé <%=transact.operation%>€ pour</li>
+        <li><strong><%=transact.receveurs[1...-1].tr('"', '')%></strong></li>
+        <br>
+        <li>Description: <%=transact.commentaire%></li>
+        <li style="opacity: 0.6"><small><%=transact.created_at.strftime("%d %B %Y à %H:%M")%></small></li>
+
+        <br>
+      </div>
+    <% end %>
+    <br>
+  </ul>
+</div>

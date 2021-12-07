@@ -1,2 +1,53 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+<br>
+<br>
+
+  <div class="p-4">
+
+      <% if current_user.nil? == false %>
+      <h2 style="font-weight: bold">Bienvenue sur Jtedois, <%=current_user.name %> !</h2>
+      <% else %>
+      <h1>Bienvenue sur Jtedois</h1>
+      <% end %>
+
+      <br>
+      <br>
+
+      <h4>Tes differents partages :</h4>
+
+      <% if @budgets.length == 0 %>
+      <h3> Pas encore de partage !</h3>
+      <% else %>
+        <ul>
+          <% @budgets.sort_by { |p| p.updated_at }.reverse!.each do |budget| %>
+            <% budget_ids = [] %>
+            <% budget.users.each do |u|%>
+            <% budget_ids << u.id %>
+            <% end %>
+            <% if current_user.nil? == false && budget_ids.include?(current_user.id) %>
+
+              <%= link_to(budget) do %>
+                <div class="card pt-4">
+                  <li><strong>Name: </strong> <%=budget.name %></li>
+                  <li><strong>Total: </strong> <%=budget.total_cents %>€</li>
+                  <li><span><strong>Users: </strong>
+                  <br>
+                  <% budget.user_budgets.each do |n| %>
+                    <%=n.user.name %></span></li>
+                  <% end %>
+                  <br>
+                  <br>
+                  <%# <% raise %>
+                </div>
+              <% end %>
+            <% else %>
+            <% end %>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <%= link_to "creer un nouveau budget", new_budget_path %>
+  </div>
+
+
+</div>

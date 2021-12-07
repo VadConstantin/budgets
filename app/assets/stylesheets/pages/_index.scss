@@ -1,2 +1,12 @@
 // Import page-specific CSS files here.
 @import "home";
+@import "form";
+
+a {
+  text-decoration: none;
+  color: rgb(67, 67, 67);
+}
+
+a:hover {
+color: rgb(221, 137, 72)
+}
