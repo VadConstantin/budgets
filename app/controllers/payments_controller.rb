@@ -17,16 +17,18 @@ class PaymentsController < ApplicationController
   end
 
   def create
+
     @budget = Budget.where(id: params[:budget_id])
+
     @payment = Payment.new(payment_params)
     @payment.budget_id = @budget[0].id
-    @payment.save!
+    @payment.save
 
     # ------------------PAYEUR---------------------
 
     @payeur = params[:payment][:payeurs] #=> "1"
     u = UserPayment.create(payment_id: @payment.id, user_id: @payeur.to_i, state: "payeur")
-    u.save!
+    u.save
 
 
 
@@ -35,21 +37,26 @@ class PaymentsController < ApplicationController
     @receveurs = params[:payment][:receveurs][1...10] #=> ["1", "3"]
     @receveurs.each do |receveur|
       v = UserPayment.create(payment_id: @payment.id, user_id: receveur.to_i, state: "receveur")
-      v.save!
+      v.save
     end
 
 
     # ------------------BALANCE--------------------
+    @user_budget_payeur = UserBudget.where(budget_id: @budget[0].id).where(user_id: @payeur.to_i)
+    if @receveurs.include?(@payeur) #=> ["1", "3"] includes "1" ?
+    @user_budget_payeur[0].dette += (params[:payment][:montant_cents]) / 2
+    @user_budget_payeur[0].save
+    else
+    @user_budget_payeur[0].dette += params[:payment][:montant_cents].to_i
+    @user_budget_payeur[0].save
+    end
 
-
-
-
-
+     # ------------------TOTAL----------------------
 
     @budget[0].total_cents += params[:payment][:montant_cents].to_i
-    @budget[0].save!
+    @budget[0].save
 
-    if @payment.save!
+    if @payment.save
       redirect_to root_path
     else
       render :new

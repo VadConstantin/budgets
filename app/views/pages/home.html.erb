@@ -13,10 +13,10 @@
       <br>
       <br>
 
-      <h4>Tes differents budgets :</h4>
+      <h2>Tes differents budgets :</h2>
 
       <% if @budgets.length == 0 %>
-      <h3> Pas encore de budget !</h3>
+      <h6> Pas encore de budget !</h6>
       <% else %>
         <ul>
           <% @budgets.sort_by { |p| p.updated_at }.reverse!.each do |budget| %>
@@ -30,6 +30,24 @@
                 <div class="card pt-4">
                   <li><strong>Nom: </strong> <%=budget.name %></li>
                   <li><strong>Total dépensé: </strong> <%=budget.total_cents %>€</li>
+
+                  <% @persons = [] %>
+                  <strong>Balance: </strong><%UserBudget.where(budget_id: budget.id).each do |n| %>
+                    <% @persons << {name: n.user.name, dette: n.dette} %>
+                  <% end %>
+
+                  <% if @persons[1].nil? == false %>
+                    <% if @persons[0][:dette] > @persons[1][:dette]%>
+                      <%=@persons[1][:name]%> doit <%= (@persons[0][:dette]) - (@persons[1][:dette]) %>€ à <%=@persons[0][:name]%>
+                    <% elsif @persons[0][:dette] < @persons[1][:dette]%>
+                      <%=@persons[0][:name]%> doit <%= (@persons[1][:dette]) - (@persons[0][:dette]) %>€ à <%=@persons[1][:name]%>
+                    <% else %>
+                    Vous ne vous devez rien !
+                    <% end %>
+                  <% end %>
+
+
+                  <br>
                   <li><span><strong>Users: </strong>
                   <br>
                   <% budget.user_budgets.each do |n| %>
@@ -46,7 +64,7 @@
         </ul>
       <% end %>
 
-      <%= link_to "creer un nouveau budget", new_budget_path %>
+      <%= link_to "creer un nouveau budget", new_budget_path, class: "btn btn-primary" %>
   </div>
 
 
