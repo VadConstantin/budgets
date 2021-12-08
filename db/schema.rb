@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_07_140538) do
+ActiveRecord::Schema.define(version: 2021_12_08_020604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,10 +26,10 @@ ActiveRecord::Schema.define(version: 2021_12_07_140538) do
   create_table "payments", force: :cascade do |t|
     t.integer "montant_cents"
     t.string "commentaire"
-    t.bigint "budgets_id", null: false
+    t.bigint "budget_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["budgets_id"], name: "index_payments_on_budgets_id"
+    t.index ["budget_id"], name: "index_payments_on_budget_id"
   end
 
   create_table "user_budgets", force: :cascade do |t|
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 2021_12_07_140538) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["budget_id"], name: "index_user_budgets_on_budget_id"
     t.index ["user_id"], name: "index_user_budgets_on_user_id"
+  end
+
+  create_table "user_payments", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "payment_id", null: false
+    t.string "state"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["payment_id"], name: "index_user_payments_on_payment_id"
+    t.index ["user_id"], name: "index_user_payments_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,7 +64,9 @@ ActiveRecord::Schema.define(version: 2021_12_07_140538) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "payments", "budgets", column: "budgets_id"
+  add_foreign_key "payments", "budgets"
   add_foreign_key "user_budgets", "budgets"
   add_foreign_key "user_budgets", "users"
+  add_foreign_key "user_payments", "payments"
+  add_foreign_key "user_payments", "users"
 end

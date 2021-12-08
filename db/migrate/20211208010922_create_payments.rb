@@ -3,8 +3,7 @@ class CreatePayments < ActiveRecord::Migration[6.0]
     create_table :payments do |t|
       t.integer :montant_cents
       t.string :commentaire
-      t.references :budgets, null: false, foreign_key: true
-
+      t.references :budget, null: false, foreign_key: true
       t.timestamps
     end
   end

@@ -5,31 +5,31 @@
   <div class="p-4">
 
       <% if current_user.nil? == false %>
-      <h2 style="font-weight: bold">Bienvenue sur Jtedois, <%=current_user.name %> !</h2>
+      <h2 style="font-weight: bold">Bienvenue <%=current_user.name %> !</h2>
       <% else %>
-      <h1>Bienvenue sur Jtedois</h1>
+      <h1>Bienvenue sur JTEDOIS !</h1>
       <% end %>
 
       <br>
       <br>
 
-      <h4>Tes differents partages :</h4>
+      <h4>Tes differents budgets :</h4>
 
       <% if @budgets.length == 0 %>
-      <h3> Pas encore de partage !</h3>
+      <h3> Pas encore de budget !</h3>
       <% else %>
         <ul>
           <% @budgets.sort_by { |p| p.updated_at }.reverse!.each do |budget| %>
             <% budget_ids = [] %>
             <% budget.users.each do |u|%>
-            <% budget_ids << u.id %>
+              <% budget_ids << u.id %>
             <% end %>
             <% if current_user.nil? == false && budget_ids.include?(current_user.id) %>
 
               <%= link_to(budget) do %>
                 <div class="card pt-4">
-                  <li><strong>Name: </strong> <%=budget.name %></li>
-                  <li><strong>Total: </strong> <%=budget.total_cents %>€</li>
+                  <li><strong>Nom: </strong> <%=budget.name %></li>
+                  <li><strong>Total dépensé: </strong> <%=budget.total_cents %>€</li>
                   <li><span><strong>Users: </strong>
                   <br>
                   <% budget.user_budgets.each do |n| %>

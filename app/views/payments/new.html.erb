@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row justify-content-center">
+      <div class="col-12 col-md-10 col-lg-8">
+        <div class="row justify-content-center mb-3">
+          <div class="card mb-4">
+            <div class="card-body">
+                <div class="h2 mt-3">Ajoute ton paiement !</div>
+                  <div class="info-log">
+                    <%= simple_form_for [@budget, @payment] do |f| %>
+                      <%= f.input :payeurs, collection: @participants, checked: "", legend_tag: true, as: :radio_buttons, label: "Qui a payé ?" %>
+                      <%= f.input :montant_cents, placeholder: "Quel est le montant?", label: "Montant" %>
+                      <%= f.input :receveurs, collection: @participants, checked: "", legend_tag: true, as: :check_boxes, label: "Pour qui ?" %>
+                      <%= f.input :commentaire, placeholder: "Description ?", label: "Description" %>
+                      <div class="center">
+                          <%= f.button :submit, "Validez le paiement", class:"btn-primary" %>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+            </div>
+            <%=link_to " < retour", root_path %>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>

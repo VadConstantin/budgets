@@ -2,34 +2,43 @@
   <h3 class="mt-4"><%=@budget.name%></h3>
   <br>
 
-    <%# link_to "ajouter une transaction", new_partage_transact_path(@budget.id) %>
-
-
-  <br>
-  Total: <%=@budget.total_cents%> €
-  <br>
-
+  <%= link_to "ajouter un payment", new_budget_payment_path(@budget.id), class: "btn btn-primary" %>
 
   <br>
+  Total dépensé: <%=@budget.total_cents%> €
   <br>
-  participants : <%= User.where(id: @partage.participants.chars)[0].name%>, <%= User.where(id: @partage.participants.chars)[1].name %>
+  Balance:
+  <br>
+  <br>
+  participants :
+  <%@budget.users.each do |participant|%>
+  <%=participant.name%>
+  <% end %>
 
   <br>
   <br>
-  Dernières transactions :
-  <ul>
-    <% @transacts.order(id: :desc).each do |transact| %>
+
+  <% if Payment.where(budget_id: @budget.id).length > 0 %>
+  Derniers paiements :
+    <ul>
+    <%Payment.where(budget_id: @budget.id).each do |payment| %>
       <div class="card pt-4">
 
-        <li><strong><%=transact.payeurs%></strong> a payé <%=transact.operation%>€ pour</li>
-        <li><strong><%=transact.receveurs[1...-1].tr('"', '')%></strong></li>
-        <br>
-        <li>Description: <%=transact.commentaire%></li>
-        <li style="opacity: 0.6"><small><%=transact.created_at.strftime("%d %B %Y à %H:%M")%></small></li>
+      <li><strong><%= UserPayment.where(payment_id: payment.id).where(state: "payeur")[0].user.name %></strong> a payé <strong><%=payment.montant_cents %>€</strong> pour :</li>
+      <br>
 
-        <br>
+      <% UserPayment.where(payment_id: payment.id).where(state: "receveur").each do |receveur|%>
+        <li><strong><%= receveur.user.name %></strong></li>
+      <% end %>
+
+      <br>
+      <li>Description: <%=payment.commentaire%></li>
+      <li style="opacity: 0.6"><small><%=payment.created_at.strftime("%d %B %Y à %H:%M")%></small></li>
       </div>
     <% end %>
-    <br>
-  </ul>
+    </ul>
+  <% else %>
+  Pas de paiement
+  <% end %>
+
 </div>

@@ -12,13 +12,13 @@ class BudgetsController < ApplicationController
 
   def create
     @budget = Budget.new(budget_params)
-    @budget.save
+    @budget.total_cents = 0
+    @budget.save!
     selected_users = params[:budget][:participants][1...10] # ==> je recupere les clés sous forme d'array ["1", "2"]
 
-
     selected_users.each do |user|
-    userB = UserBudget.create(budget_id: @budget.id, user_id: user.to_i)
-    userB.save!
+    user1 = UserBudget.create(budget_id: @budget.id, user_id: user.to_i)
+    user1.save!
     end
 
     if @budget.save!
@@ -29,7 +29,6 @@ class BudgetsController < ApplicationController
     end
 
   end
-
 
   private
 

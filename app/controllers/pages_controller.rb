@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
   @budgets = Budget.all
-  # User.where(id: partage.participants.chars)
+
   end
 
 end
