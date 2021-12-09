@@ -30,8 +30,6 @@ class PaymentsController < ApplicationController
     u = UserPayment.create(payment_id: @payment.id, user_id: @payeur.to_i, state: "payeur")
     u.save
 
-
-
     # ----------------RECEVEUR(S)------------------
 
     @receveurs = params[:payment][:receveurs][1...10] #=> ["1", "3"]
@@ -40,11 +38,10 @@ class PaymentsController < ApplicationController
       v.save
     end
 
-
     # ------------------BALANCE--------------------
     @user_budget_payeur = UserBudget.where(budget_id: @budget[0].id).where(user_id: @payeur.to_i)
     if @receveurs.include?(@payeur) #=> ["1", "3"] includes "1" ?
-    @user_budget_payeur[0].dette += (params[:payment][:montant_cents]) / 2
+    @user_budget_payeur[0].dette += (params[:payment][:montant_cents]).to_f.fdiv(@receveurs.length)
     @user_budget_payeur[0].save
     else
     @user_budget_payeur[0].dette += params[:payment][:montant_cents].to_i

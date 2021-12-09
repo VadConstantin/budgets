@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   validates :name, presence: true
+  validates :name, uniqueness: true
 
   has_many :user_budgets, class_name: 'UserBudget'
   has_many :budgets, through: :user_budgets

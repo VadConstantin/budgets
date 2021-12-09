@@ -7,12 +7,14 @@
   <br>
   <strong> Total dépensé: </strong><%=@budget.total_cents%> €
   <br>
-  <% @persons = [] %>
   <br>
+
+
+
+  <% @persons = [] %>
   <strong>Balance: </strong><%UserBudget.where(budget_id: @budget.id).each do |n| %>
   <% @persons << {name: n.user.name, dette: n.dette} %>
   <% end %>
-
 
   <% if @persons[0][:dette] > @persons[1][:dette]%>
   <%=@persons[1][:name]%> doit <%= (@persons[0][:dette]) - (@persons[1][:dette]) %>€ à <%=@persons[0][:name]%>
@@ -21,6 +23,8 @@
   <% else %>
   Vous ne vous devez rien !
   <% end %>
+
+
 
   <br>
   <br>
