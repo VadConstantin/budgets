@@ -40,14 +40,14 @@ class PaymentsController < ApplicationController
 
     # ------------------BALANCE--------------------
     @user_budget_payeur = UserBudget.where(budget_id: @budget[0].id).where(user_id: @payeur.to_i)
-    if @receveurs.include?(@payeur) && @receveurs[0] != @payeur #=> ["1", "3"] includes "1" et
+    if @receveurs.length == 1 && @receveurs[0] == @payeur
+      @user_budget_payeur[0].dette += 0
+    elsif @receveurs.include?(@payeur)
       @user_budget_payeur[0].dette += (params[:payment][:montant_cents]).to_f.fdiv(@receveurs.length)
       @user_budget_payeur[0].save
     elsif @receveurs.include?(@payeur) == false
       @user_budget_payeur[0].dette += params[:payment][:montant_cents].to_i
       @user_budget_payeur[0].save
-    elsif @receveurs[0] == @payeur
-      @user_budget_payeur[0].dette += 0
     end
 
      # ------------------TOTAL----------------------
