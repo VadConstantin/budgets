@@ -27,7 +27,6 @@ class BudgetsController < ApplicationController
       @participants = User.all
       render :new
     end
-
   end
 
   private
