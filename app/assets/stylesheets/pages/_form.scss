@@ -22,16 +22,20 @@
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #fff;
+    background-color: rgba(44, 44, 75, 0.118);
     background-clip: border-box;
-    border: 1px solid rgba(0,0,0,0.125);
     border-radius: 10px;
-    margin-top: 20px;
     list-style: none;
     padding-left: 20px;
     padding-top: 20px;
+    border: 0px solid white;
 }
 
+.card:hover {
+  background-color: rgb(44, 44, 75);
+  color: white;
+  transition: color 0.10s ease-in-out, background-color 0.10s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
 
 .card-body {
   flex: 1 1 auto;

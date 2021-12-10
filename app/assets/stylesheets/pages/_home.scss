@@ -1,1 +1,108 @@
 // Specific CSS for your home-page
+.flex-box {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-child {
+  flex: 1 0 21%;
+  width: 380px;
+  margin: 5px;
+  height: 300px;
+  overflow:hidden;
+}
+
+.flex-box-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+#button-home {
+  position: relative;
+  right: 84px;
+}
+
+.centre {
+  position: relative;
+  color: rgb(44, 44, 75);
+}
+
+#diff-budgets {
+  color:rgb(44, 44, 75)
+}
+
+// *Shrinking for mobile*/
+
+@media (max-width: 1400px) {
+  #button-home {
+    position: relative;
+    right: 294px;
+  }
+}
+
+@media (max-width: 1200px) {
+  #button-home {
+    position: relative;
+    right: 271px;
+  }
+}
+
+ @media (max-width: 991px) {
+  #button-home {
+    position: relative;
+    right: -5px;
+    top: -30px;
+  }
+  .flex-child {
+    margin-top: 10px;
+  }
+
+  #diff-budgets {
+    display: none
+  }
+
+  .centre {
+    top: -30px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  #button-home {
+    position: relative;
+    right: -5px;
+    top: -30px;
+  }
+
+  #diff-budgets {
+    display: none
+  }
+  .centre {
+    top: -30px;
+  }
+}
+
+@media (max-width: 378px) {
+  #button-home {
+    position: relative;
+    right: -38px;
+    top: -30px;
+  }
+
+  .flex-child {
+    flex: 1 0 21%;
+    width: 290px;
+    margin: 5px;
+    height: 300px;
+    overflow: hidden;
+  }
+
+  #diff-budgets {
+    display: none
+  }
+
+  .centre {
+    text-align: center;
+
+  }
+}

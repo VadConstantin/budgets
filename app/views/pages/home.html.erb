@@ -5,20 +5,25 @@
   <div class="p-4">
 
       <% if current_user.nil? == false %>
-      <h2 style="font-weight: bold">Bienvenue <%=current_user.name %> !</h2>
+      <h2 class="centre" style="font-weight: bold">Bienvenue <%=current_user.name %> !</h2>
       <% else %>
       <h1>Bienvenue sur JTEDOIS !</h1>
       <% end %>
 
       <br>
-      <br>
 
-      <h2>Tes differents budgets :</h2>
+      <div class="flex-box-between">
+        <h2 id="diff-budgets">Tes differents budgets :</h2>
+        <div id="button-home">
+        <%= link_to "creer un nouveau budget", new_budget_path, class: "btn-perso-1" %>
+        </div>
+
+      </div>
 
       <% if @budgets.length == 0 %>
       <h6> Pas encore de budget !</h6>
       <% else %>
-        <ul>
+        <ul class="flex-box">
           <% @budgets.sort_by { |p| p.updated_at }.reverse!.each do |budget| %>
             <% budget_ids = [] %>
             <% budget.users.each do |u|%>
@@ -27,7 +32,7 @@
             <% if current_user.nil? == false && budget_ids.include?(current_user.id) %>
 
               <%= link_to(budget) do %>
-                <div class="card pt-4">
+                <div class="card pt-4 flex-child">
                   <li><strong>Nom: </strong> <%=budget.name %></li>
                   <li><strong>Total dépensé: </strong> <%=budget.total_cents %>€</li>
 
@@ -64,7 +69,6 @@
         </ul>
       <% end %>
 
-      <%= link_to "creer un nouveau budget", new_budget_path, class: "btn btn-primary" %>
   </div>
 
 
