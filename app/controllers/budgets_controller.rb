@@ -11,6 +11,7 @@ class BudgetsController < ApplicationController
   end
 
   def create
+    params[:budget][:name].capitalize!
     @budget = Budget.new(budget_params)
     @budget.total_cents = 0
     @budget.save!

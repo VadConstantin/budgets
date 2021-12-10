@@ -20,6 +20,7 @@ class PaymentsController < ApplicationController
 
     @budget = Budget.where(id: params[:budget_id])
 
+    params[:payment][:commentaire].capitalize!
     @payment = Payment.new(payment_params)
     @payment.budget_id = @budget[0].id
     @payment.save
@@ -51,7 +52,6 @@ class PaymentsController < ApplicationController
     end
 
      # ------------------TOTAL----------------------
-
     @budget[0].total_cents += params[:payment][:montant_cents].to_i
     @budget[0].save
 
@@ -68,7 +68,5 @@ class PaymentsController < ApplicationController
   def payment_params
     params.require(:payment).permit(:montant_cents, :commentaire, :budget_id)
   end
-
-
 
 end
