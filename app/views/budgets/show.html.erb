@@ -39,6 +39,7 @@
   <% if Payment.where(budget_id: @budget.id).length > 0 %>
   Derniers paiements :
     <ul>
+
     <%Payment.where(budget_id: @budget.id).each do |payment| %>
       <div class="card pt-4">
 
@@ -52,7 +53,9 @@
       <br>
       <li>Description: <%=payment.commentaire%></li>
       <li style="opacity: 0.6"><small><%=payment.created_at.strftime("%d %B %Y à %H:%M")%></small></li>
+      <li> <%= link_to "delete payment", budget_payment_path(@budget, payment_id: payment.id), method: :delete %> </li>
       </div>
+
 
     <% end %>
     </ul>

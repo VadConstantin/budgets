@@ -3,4 +3,6 @@ class Budget < ApplicationRecord
   has_many :users, through: :user_budgets
 
   has_many :payments, dependent: :destroy
+
+  validates :name, presence: true
 end

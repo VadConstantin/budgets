@@ -3,6 +3,8 @@ class BudgetsController < ApplicationController
 
   def show
     @budget = Budget.find(params[:id])
+    @payments = Payment.where(budget_id: @budget.id)
+
   end
 
   def new
@@ -14,15 +16,15 @@ class BudgetsController < ApplicationController
     params[:budget][:name].capitalize!
     @budget = Budget.new(budget_params)
     @budget.total_cents = 0
-    @budget.save!
+    @budget.save
     selected_users = params[:budget][:participants][1...10] # ==> je recupere les clés sous forme d'array ["1", "2"]
 
     selected_users.each do |user|
     user1 = UserBudget.create(budget_id: @budget.id, user_id: user.to_i)
-    user1.save!
+    user1.save
     end
 
-    if @budget.save!
+    if @budget.save
       redirect_to root_path
     else
       @participants = User.all
