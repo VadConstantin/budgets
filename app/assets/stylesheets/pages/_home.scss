@@ -35,6 +35,8 @@
   position: relative;
   right: 53px;
   top: 35px;
+  height: 40px;
+  width: 40px;
 }
 
 .trash:hover {
@@ -85,6 +87,12 @@
   .centre {
     top: -30px;
   }
+  .modif {
+    position: relative;
+    left: 270px;
+    font-size: 14px;
+    bottom: 4px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -99,6 +107,41 @@
   }
   .centre {
     top: -30px;
+  }
+
+  .modif {
+    position: relative;
+    left: 270px;
+    font-size: 14px;
+    bottom: 4px;
+  }
+  .trash {
+  position: relative;
+  right: 50px;
+  top: 35px;
+  }
+}
+
+@media (max-width: 477px) {
+  .modif {
+    position: relative;
+    left: 220px;
+    font-size: 14px;
+    bottom: 4px;
+  }
+  .trash {
+  position: relative;
+  right: -326px;
+  top: -248px;
+  }
+}
+
+@media (max-width: 428px) {
+
+  .trash {
+  position: relative;
+  right: -286px;
+  top: -248px;
   }
 }
 
@@ -135,7 +178,26 @@
     position: relative;
     left: 190px;
     font-size: 14px;
-    bottom: -6px;
+    bottom: -10px;
+  }
+
+  .container {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 360px) {
+   .trash {
+  position: relative;
+  right: -257px;
+  top: -230px;
+  }
+
+  .modif {
+    position: relative;
+    left: 140px;
+    font-size: 14px;
+    bottom: 10px;
   }
 
   .container {
