@@ -5,10 +5,10 @@
 }
 
 .flex-child {
-  flex: 1 0 21%;
+
   width: 380px;
   margin: 5px;
-  height: 300px;
+  height: 270px;
   overflow:hidden;
 }
 
@@ -19,7 +19,7 @@
 
 #button-home {
   position: relative;
-  right: 84px;
+  right: 614px;
 }
 
 .centre {
@@ -31,19 +31,40 @@
   color:rgb(44, 44, 75)
 }
 
+.trash {
+  position: relative;
+  right: 53px;
+  top: 35px;
+}
+
+.trash:hover {
+  color: rgb(44, 44, 75)
+  }
+
+.modif {
+  position: relative;
+  left: 280px;
+  font-size: 14px;
+
+}
+
+.modif:hover {
+  color: white;
+  text-decoration: none;
+}
 // *Shrinking for mobile*/
 
 @media (max-width: 1400px) {
   #button-home {
     position: relative;
-    right: 294px;
+    right: 434px;
   }
 }
 
 @media (max-width: 1200px) {
   #button-home {
     position: relative;
-    right: 271px;
+    right: 254px;
   }
 }
 
@@ -64,7 +85,6 @@
   .centre {
     top: -30px;
   }
-
 }
 
 @media (max-width: 768px) {
@@ -90,10 +110,10 @@
   }
 
   .flex-child {
-    flex: 1 0 21%;
+
     width: 290px;
     margin: 5px;
-    height: 300px;
+    height: 250px;
     overflow: hidden;
   }
 
@@ -103,6 +123,22 @@
 
   .centre {
     text-align: center;
+  }
 
+  .trash {
+  position: relative;
+  right: -257px;
+  top: -230px;
+  }
+
+  .modif {
+    position: relative;
+    left: 190px;
+    font-size: 14px;
+    bottom: -6px;
+  }
+
+  .container {
+    font-size: 14px;
   }
 }

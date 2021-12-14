@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
   resources :budgets do
-    resources :payments, only: [:show, :new, :create, :destroy]
+    resources :payments, only: [:show, :new, :create, :destroy, :edit, :update]
     # resources :rencontres
   end
 

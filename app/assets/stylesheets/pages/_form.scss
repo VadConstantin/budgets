@@ -4,7 +4,6 @@
     width: 66.66666667%;
     }
 
-
 .col-md-10
 {
     flex: 0 0 auto;
@@ -29,6 +28,25 @@
     padding-left: 20px;
     padding-top: 20px;
     border: 0px solid white;
+    &:hover {
+      text-decoration: none;
+    }
+}
+
+.card-payment {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: rgba(44, 44, 75, 0.118);
+    background-clip: border-box;
+    border-radius: 10px;
+    list-style: none;
+    padding-left: 20px;
+    padding-top: 20px;
+    border: 0px solid white;
+    margin-top: 10px;
 }
 
 .card:hover {

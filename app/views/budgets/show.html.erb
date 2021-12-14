@@ -1,15 +1,19 @@
 <div class="container">
-  <h3 class="mt-4"><%=@budget.name%></h3>
-  <br>
+  <div class="display-flex-2 mt-4">
+    <%= link_to "<", root_path, class: "retour"%>
+    <h2 class="text-center" style="margin: 10px auto;"><%=@budget.name%></h2>
+  </div>
 
-  <%= link_to "ajouter un payment", new_budget_payment_path(@budget.id), class: "btn btn-primary" %>
-
   <br>
-  <strong> Total dépensé: </strong><%=@budget.total_cents%> €
+  <div class="display-flex">
+      <div>
+        <%= link_to "Ajouter un payment", new_budget_payment_path(@budget.id), class: "btn-perso-1" %>
+      </div>
+      <div style="position: relative; top: 5px;">
+        <strong> Total dépensé: </strong><%=@budget.total_cents%> €
+      </div>
+  </div>
   <br>
-  <br>
-
-
 
   <% @persons = [] %>
   <strong>Balance: </strong><%UserBudget.where(budget_id: @budget.id).each do |n| %>
@@ -25,10 +29,8 @@
   <% end %>
 
 
-
   <br>
-  <br>
-  participants :
+  <strong>Participants :</strong>
   <%@budget.users.each do |participant|%>
   <%=participant.name%>
   <% end %>
@@ -41,26 +43,36 @@
     <ul>
 
     <%Payment.where(budget_id: @budget.id).each do |payment| %>
-      <div class="card pt-4">
+      <div class="card-payment pt-4">
 
-      <li><strong><%= UserPayment.where(payment_id: payment.id).where(state: "payeur")[0].user.name %></strong> a payé <strong><%=payment.montant_cents %>€</strong> pour :</li>
+      <div class="display-flex">
+        <div>
+          <li><strong><%= UserPayment.where(payment_id: payment.id).where(state: "payeur")[0].user.name %></strong> a payé <strong><%=payment.montant_cents %>€</strong> pour :</li>
+
+          <% UserPayment.where(payment_id: payment.id).where(state: "receveur").each do |receveur|%>
+            <span><strong><%= receveur.user.name %></strong></span>
+          <% end %>
+        </div>
+        <li> <%= link_to "Modifier", edit_budget_payment_path(@budget, payment_id: payment.id), class: "btn-perso-1 me-4"%> </li>
+      </div>
+
       <br>
-
-      <% UserPayment.where(payment_id: payment.id).where(state: "receveur").each do |receveur|%>
-        <li><strong><%= receveur.user.name %></strong></li>
-      <% end %>
-
-      <br>
-      <li>Description: <%=payment.commentaire%></li>
-      <li style="opacity: 0.6"><small><%=payment.created_at.strftime("%d %B %Y à %H:%M")%></small></li>
-      <li> <%= link_to "delete payment", budget_payment_path(@budget, payment_id: payment.id), method: :delete %> </li>
+        <div class="display-flex">
+          <div>
+            <li>"<%=payment.commentaire%>"</li>
+            <li style="opacity: 0.6; padding-bottom: 5px"><small><%=payment.created_at.strftime("%d %B %Y à %H:%M")%></small></li>
+          </div>
+           <div>
+            <li>  <%= link_to "Effacer", budget_payment_path(@budget, payment_id: payment.id), class: "btn-perso-1 me-4", method: :delete, data: { confirm: 'Es-tu sûr(e)?' } %> </li>
+          </div>
+        </div>
       </div>
 
 
     <% end %>
     </ul>
   <% else %>
-  Pas de paiement
+  Pas encore de paiement :-)
   <% end %>
 
 </div>

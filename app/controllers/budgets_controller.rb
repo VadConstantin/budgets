@@ -4,12 +4,23 @@ class BudgetsController < ApplicationController
   def show
     @budget = Budget.find(params[:id])
     @payments = Payment.where(budget_id: @budget.id)
-
   end
 
   def new
     @budget = Budget.new
     @participants = User.all
+  end
+
+  def edit
+    @budget = Budget.find(params[:id])
+    @participants = @budget.users
+
+  end
+
+  def update
+    @budget = Budget.find(params[:id])
+    @budget.update(budget_params)
+    redirect_to root_path
   end
 
   def create
@@ -30,6 +41,12 @@ class BudgetsController < ApplicationController
       @participants = User.all
       render :new
     end
+  end
+
+  def destroy
+    @budget = Budget.find(params[:id])
+    @budget.destroy
+    redirect_to root_path
   end
 
   private

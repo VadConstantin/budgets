@@ -70,14 +70,31 @@ class PaymentsController < ApplicationController
   def destroy
     @budget = Budget.find(params[:id])
     @payment = Payment.find(params[:payment_id])
-    # @url =
+
+    @payeur = UserPayment.where(payment_id: @payment.id).where(state: "payeur")[0].user_id
+    @user_budget_payeur = UserBudget.where(budget_id: @budget.id).where(user_id: @payeur.to_i)
+
+    @receveurs = []
+    UserPayment.where(payment_id: @payment.id).where(state: "receveur").each do |user_payment|
+    @receveurs << user_payment.user_id
+    end
+
+    if @receveurs.length == 1 && @receveurs[0] == @payeur
+        @user_budget_payeur[0].dette += 0
+      elsif @receveurs.include?(@payeur)
+        @user_budget_payeur[0].dette -= @payment.montant_cents.to_f.fdiv(@receveurs.length)
+        @user_budget_payeur[0].save
+      elsif @receveurs.include?(@payeur) == false
+        @user_budget_payeur[0].dette -= @payment.montant_cents.to_i
+        @user_budget_payeur[0].save
+    end
+
+    @budget.total_cents -= @payment.montant_cents
+    @budget.save
     @payment.destroy
+
     redirect_to budget_path(@budget)
   end
-
-
-
-
 
   private
 
