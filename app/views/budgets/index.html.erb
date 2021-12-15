@@ -19,7 +19,6 @@
                 <h2 class="text-center"><strong><%=budget.name %></strong> </h2>
                 <br>
                 <li><strong>Total dépensé: </strong> <%=budget.total_cents %>€</li>
-
                 <% @persons = [] %>
                 <strong>Balance: </strong><%UserBudget.where(budget_id: budget.id).each do |n| %>
                   <% @persons << {name: n.user.name, dette: n.dette} %>

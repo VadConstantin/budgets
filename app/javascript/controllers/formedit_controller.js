@@ -14,8 +14,6 @@ export default class extends Controller {
   }
 
   checker() {
-
       this.checkboxTarget.checked = true
-
   }
 }
