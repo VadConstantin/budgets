@@ -10,11 +10,11 @@
                   <div class="info-log" data-controller="formeditpayment">
                     <%= simple_form_for [@budget, @payment] do |f| %>
                       <%= f.input :payeurs, collection: @payeurs_edit, :input_html => { :checked => true }, legend_tag: true, as: :radio_buttons, label: "Qui a payé ?" %>
-                      <%= f.input :montant_cents, placeholder: "Quel est le montant?", label: "Montant" %>
+                      <%= f.input :montant_cents, placeholder: "Quel est le montant?", label: "Montant", input_html: {"data-action" => "input->formeditpayment#remplir" } %>
                       <%= f.input :receveurs, collection: @participants, checked: "", legend_tag: true, as: :check_boxes, label: "Pour qui ?", input_html: { "data-formeditpayment-target" => "checkbox", "data-action" => "click->formeditpayment#checker" } %>
-                      <%= f.input :commentaire, placeholder: "Description ?", label: "Description" %>
+                      <%= f.input :commentaire, placeholder: "Description ?", label: "Description", input_html: {"data-action" => "input->formeditpayment#remplir" } %>
                       <div class="center" data-formeditpayment-target="button">
-                        <%= f.button :submit, "Validez le paiement", class:"btn-primary", input_html: {"data-action" => "click->formeditpayment#checker" } %>
+                        <%= f.button :submit, "Valide le paiement", class:"btn-primary", input_html: {"data-action" => "click->formeditpayment#checker" } %>
                       </div>
                     <% end %>
                   </div>

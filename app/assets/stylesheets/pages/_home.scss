@@ -91,7 +91,7 @@
   }
   .modif {
     position: relative;
-    left: 270px;
+    left: 310px;
     font-size: 14px;
     bottom: 4px;
   }
@@ -113,7 +113,7 @@
 
   .modif {
     position: relative;
-    left: 270px;
+    left: 315px;
     font-size: 14px;
     bottom: 4px;
   }
@@ -127,13 +127,13 @@
 @media (max-width: 477px) {
   .modif {
     position: relative;
-    left: 220px;
+    left: 282px;
     font-size: 14px;
     bottom: 4px;
   }
   .trash {
   position: relative;
-  right: -326px;
+  right: -308px;
   top: -248px;
   }
 }
@@ -144,6 +144,12 @@
   position: relative;
   right: -286px;
   top: -248px;
+  }
+  .modif {
+    position: relative;
+    left: 262px;
+    font-size: 14px;
+    bottom: 4px;
   }
 }
 
