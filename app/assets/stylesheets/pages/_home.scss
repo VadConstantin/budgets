@@ -19,7 +19,8 @@
 
 #button-home {
   position: relative;
-  right: 614px;
+  right: 860px;
+  bottom: 3px;
 }
 
 .centre {
@@ -45,8 +46,8 @@
 
 .modif {
   position: relative;
-  left: 280px;
-  font-size: 14px;
+  left: 310px;
+  font-size: 0px;
 
 }
 
@@ -59,21 +60,22 @@
 @media (max-width: 1400px) {
   #button-home {
     position: relative;
-    right: 434px;
+    right: 684px;
   }
 }
 
 @media (max-width: 1200px) {
   #button-home {
     position: relative;
-    right: 254px;
+    right: 504px;
+    bottom: 3px;
   }
 }
 
  @media (max-width: 991px) {
   #button-home {
     position: relative;
-    right: -5px;
+    right: -178px;
     top: -30px;
   }
   .flex-child {
@@ -98,7 +100,7 @@
 @media (max-width: 768px) {
   #button-home {
     position: relative;
-    right: -5px;
+    right: -185px;
     top: -30px;
   }
 
@@ -148,7 +150,7 @@
 @media (max-width: 378px) {
   #button-home {
     position: relative;
-    right: -38px;
+    right: -130px;
     top: -30px;
   }
 

@@ -1,0 +1,66 @@
+<div class="container">
+  <br>
+  <br>
+  <div class="p-4">
+    <h1 class="centre" style="font-weight: bold">Mes budgets</h1>
+    <% if @budgets.length == 0 %>
+    <h6> Pas encore de budget !</h6>
+    <% else %>
+      <ul class="flex-box">
+        <% @budgets.sort_by { |p| p.updated_at }.reverse!.each do |budget| %>
+          <% budget_ids = [] %>
+          <% budget.users.each do |u|%>
+            <% budget_ids << u.id %>
+          <% end %>
+          <% if current_user.nil? == false && budget_ids.include?(current_user.id) %>
+
+            <%= link_to(budget) do %>
+              <div class="card pt-4 flex-child">
+                <h2 class="text-center"><strong><%=budget.name %></strong> </h2>
+                <br>
+                <li><strong>Total dépensé: </strong> <%=budget.total_cents %>€</li>
+
+                <% @persons = [] %>
+                <strong>Balance: </strong><%UserBudget.where(budget_id: budget.id).each do |n| %>
+                  <% @persons << {name: n.user.name, dette: n.dette} %>
+                <% end %>
+
+                <% if @persons[1].nil? == false %>
+                  <% if @persons[0][:dette] > @persons[1][:dette]%>
+                    <%=@persons[1][:name]%> doit <%= (@persons[0][:dette]) - (@persons[1][:dette]) %>€ à <%=@persons[0][:name]%>
+                  <% elsif @persons[0][:dette] < @persons[1][:dette]%>
+                    <%=@persons[0][:name]%> doit <%= (@persons[1][:dette]) - (@persons[0][:dette]) %>€ à <%=@persons[1][:name]%>
+                  <% else %>
+                  Vous ne vous devez rien !
+                  <% end %>
+                <% end %>
+
+                <br>
+                <li><span><strong>Participants: </strong>
+
+                <br>
+                <% budget.user_budgets.each do |n| %>
+                  <%=n.user.name %></span></li>
+                <% end %>
+                <br>
+                <br>
+
+                <%=link_to "modifier", edit_budget_path(budget), class:"modif" %>
+
+              </div>
+
+              <%= link_to budget_path(budget), method: :delete, data: { confirm: 'Es-tu sûr(e)?' }, class: "trash" do %>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                </svg>
+              <% end %>
+            <% end %>
+          <% else %>
+          <% end %>
+        <% end %>
+      </ul>
+    <% end %>
+    <%=link_to " < retour", 'javascript:history.back()'%>
+  </div>
+</div>

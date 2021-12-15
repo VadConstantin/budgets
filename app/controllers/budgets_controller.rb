@@ -6,6 +6,10 @@ class BudgetsController < ApplicationController
     @payments = Payment.where(budget_id: @budget.id)
   end
 
+  def index
+    @budgets = Budget.all
+  end
+
   def new
     @budget = Budget.new
     @participants = User.all
@@ -14,7 +18,6 @@ class BudgetsController < ApplicationController
   def edit
     @budget = Budget.find(params[:id])
     @participants = @budget.users
-
   end
 
   def update
