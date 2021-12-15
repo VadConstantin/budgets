@@ -41,7 +41,7 @@
   Derniers paiements :
     <ul>
 
-    <%Payment.where(budget_id: @budget.id).each do |payment| %>
+    <%Payment.where(budget_id: @budget.id).sort_by { |p| p.updated_at }.reverse!.each do |payment| %>
       <div class="card-payment pt-4">
 
       <div class="display-flex">
