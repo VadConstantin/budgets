@@ -52,6 +52,16 @@ class BudgetsController < ApplicationController
     redirect_to root_path
   end
 
+  def reinit
+    @budget = Budget.find(params[:id])
+    @persons = []
+    UserBudget.where(budget_id: @budget.id).each do |userbudget|
+      userbudget.dette = 0
+      userbudget.save
+    end
+    redirect_to budget_path(@budget)
+  end
+
   private
 
   def budget_params
