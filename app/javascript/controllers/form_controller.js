@@ -4,18 +4,17 @@ export default class extends Controller {
   static targets = [ "checkbox", "button" ]
 
   connect() {
-    console.log("hello there")
+    console.log("hello thereeee")
+
     if (document.querySelectorAll('input:checked').length < 2) {
       this.buttonTarget.firstElementChild.disabled = true
     }
   }
 
   checker() {
-    if (document.querySelectorAll('input:checked').length > 2) {
-      this.checkboxTarget.checked = false
-    }
 
-    if (document.querySelectorAll('input:checked').length < 2) {
+
+    if (document.querySelectorAll('input:checked').length !== 2) {
       this.buttonTarget.firstElementChild.disabled = true
     } else {
       this.buttonTarget.firstElementChild.disabled = false
