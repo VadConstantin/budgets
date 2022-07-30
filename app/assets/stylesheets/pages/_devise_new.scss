@@ -17,7 +17,7 @@
 }
 
 .devise-card {
-  background-color: white;
+  background-color: #f8fff1;
   padding: 50px;
   border-radius: 60px;
   box-shadow: 0 5px 25px #462ead;
@@ -42,7 +42,7 @@
 }
 
 .form-control {
-  background-color: white;
+  background-color: #f8fff1;
   border-color: #c9affc;
 }
 
@@ -70,7 +70,7 @@ label {
   z-index: 1000;
   transform: scale(0.8);
   border-radius: 20px;
-  background-color: white;
+  background-color: #f8fff1;
   color: #7322b2;
   border-color: #7322b2;
 }
@@ -83,6 +83,20 @@ label {
     padding: 0
     }
 
+  .budget-form-container {
+    bottom: 0;
+    padding: 0;
+    justify-content: end;
+    position: relative;
+  }
+
+  .retour {
+    position: relative;
+    top: 30px;
+    font-weight: 100;
+    color: #9634fc;
+  }
+
   .devise-card {
     border-top-right-radius: 50px;
     border-top-left-radius: 50px;
@@ -92,8 +106,19 @@ label {
 
   .btn-primary {
     margin: 10px 10px !important;
-    font-size: 11px !important;
+    font-size: 13px !important;
     min-width: 190px !important;
+  }
+
+  .higher {
+    height: 80vh;
+  }
+
+  .animate-character {
+    display: inline-block;
+    position: absolute;
+    top: -109px;
+    font-size: 100px;
   }
 
 

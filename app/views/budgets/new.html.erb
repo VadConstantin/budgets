@@ -1,31 +1,25 @@
-<br>
-<br>
-<div class="container">
-  <div class="row justify-content-center">
-      <div class="col-12 col-md-10 col-lg-8">
-        <div class="row justify-content-center mb-3">
-          <div class="card mb-4">
-            <div class="card-body">
-                <div class="h2 mt-3">Crée ton budget</div>
-                  <div class="info-log">
-                    <%= simple_form_for [@budget] do |f| %>
-                      <%= f.input :name, placeholder: "Quel est le nom du budget?", label: "Nom du budget" %>
+<div class="budget-form-container">
 
-                      <div data-controller="form">
-                        <%= f.input :participants, collection: @participants, checked: "", legend_tag: true, as: :check_boxes, label: "Qui participe ?", input_html: { "data-form-target" => "checkbox", "data-action" => "click->form#checker" } %>
+  <div class="devise-card higher">
+    <div class="animate-character">TORN</div>
+    <div class="card-body">
+          <div class="h2 mt-3">Create your budget !</div>
+          <div class="info-log">
+            <%= simple_form_for [@budget] do |f| %>
+              <%= f.input :name, label: "Budget Name" %>
 
-                        <div class="center" data-form-target="button">
-                            <%= f.button :submit, "Créer votre budget", class:"btn-primary" %>
-                        </div>
-                      </div>
+              <div data-controller="form">
+                <%= f.input :participants, collection: @participants, checked: "", legend_tag: true, as: :check_boxes, label: "Who participates with you ?", input_html: { "data-form-target" => "checkbox", "data-action" => "click->form#checker" } %>
 
-                    <% end %>
-                  </div>
+                <div class="display-flex-login-buttons" data-form-target="button">
+                    <%= f.button :submit, "Créate budget", class:"btn-primary" %>
                 </div>
-            </div>
-            <%=link_to " < retour", root_path %>
+              </div>
+
+            <% end %>
           </div>
-        </div>
-      </div>
+
+    </div>
+      <%=link_to " < retour", root_path, class: "retour" %>
   </div>
 </div>

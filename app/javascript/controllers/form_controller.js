@@ -6,19 +6,17 @@ export default class extends Controller {
   connect() {
     console.log("hello thereeee")
 
-    if (document.querySelectorAll('input:checked').length < 2) {
+    if (document.querySelectorAll('input:checked').length < 1) {
       this.buttonTarget.firstElementChild.disabled = true
     }
   }
 
   checker() {
 
-    if (document.querySelectorAll('input:checked').length !== 2) {
+    if (document.querySelectorAll('input:checked').length !== 1) {
       this.buttonTarget.firstElementChild.disabled = true
     } else {
       this.buttonTarget.firstElementChild.disabled = false
     }
   }
 }
-
-let allo = "bonjour";

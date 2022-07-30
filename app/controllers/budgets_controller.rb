@@ -12,7 +12,7 @@ class BudgetsController < ApplicationController
 
   def new
     @budget = Budget.new
-    @participants = User.all
+    @participants = User.where.not(id: current_user.id)
   end
 
   def edit
@@ -31,11 +31,11 @@ class BudgetsController < ApplicationController
     @budget = Budget.new(budget_params)
     @budget.total_cents = 0
     @budget.save
-    selected_users = params[:budget][:participants][1...10] # ==> je recupere les clés sous forme d'array ["1", "2"]
+    selected_users = params[:budget][:participants][1...10] # ==> je recupere les ids sous forme d'array ["1", "2"]
+    selected_users.push(current_user.id) # ===> on push current_user dans les selected users
 
     selected_users.each do |user|
-    user1 = UserBudget.create(budget_id: @budget.id, user_id: user.to_i)
-    user1.save
+      UserBudget.create(budget_id: @budget.id, user_id: user.to_i)
     end
 
     if @budget.save
