@@ -40,3 +40,61 @@
   font-weight: 300;
   text-align: center;
 }
+
+.form-control {
+  background-color: white;
+  border-color: #c9affc;
+}
+
+label {
+  padding-left: 0
+}
+
+.form-check-label {
+  padding-left: 20px;
+}
+
+.form-check {
+  display: block;
+  min-height: 1.5rem;
+  margin-bottom: 0.125rem;
+  position: relative;
+  display: block;
+  padding-left: 14px;
+}
+
+.alert {
+  position: fixed;
+  bottom: 16px;
+  right: -19px;
+  z-index: 1000;
+  transform: scale(0.8);
+  border-radius: 20px;
+  background-color: white;
+  color: #7322b2;
+  border-color: #7322b2;
+}
+
+@media (max-width: 420px) {
+  .devise-form-container {
+    bottom: 0;
+    justify-content: end;
+    position: relative;
+    padding: 0
+    }
+
+  .devise-card {
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
+    border-bottom-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+  }
+
+  .btn-primary {
+    margin: 10px 10px !important;
+    font-size: 11px !important;
+    min-width: 190px !important;
+  }
+
+
+}

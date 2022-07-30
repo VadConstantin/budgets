@@ -13,7 +13,6 @@ export default class extends Controller {
 
   checker() {
 
-
     if (document.querySelectorAll('input:checked').length !== 2) {
       this.buttonTarget.firstElementChild.disabled = true
     } else {

@@ -39,19 +39,6 @@ body {
   color: rgb(75, 62, 44);
 }
 
-label {
-  padding-left: 0
-}
-
-.form-check-label {
-  padding-left: 20px;
-}
-
-.form-check {
-  display: block;
-  min-height: 1.5rem;
-  margin-bottom: 0.125rem;
-  position: relative;
-  display: block;
-  padding-left: 14px;
+input[type="checkbox"] {
+  filter: invert(70%) hue-rotate(214deg) brightness(1.5);
 }
