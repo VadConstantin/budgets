@@ -12,8 +12,9 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
 
-  <body style="background-color: blanchedalmond;">
+  <body class="main-background">
     <%= render 'shared/navbar' %>
+    <div class="white-rectangle"></div>
     <%= render 'shared/flashes' %>
     <%= yield %>
   </body>

@@ -4,6 +4,18 @@
 @import "show";
 @import "devise_new";
 
+.main-background {
+  background: linear-gradient(180deg, rgba(165, 47, 255, 1) 0%, rgba(93, 75, 242, 1) 100%);
+}
+
+.white-rectangle {
+  opacity: 6%;
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background-color: white;
+}
+
 a {
   text-decoration: none;
   color: rgb(67, 67, 67);
