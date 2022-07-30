@@ -23,3 +23,17 @@
   color:antiquewhite;
   background-color: rgb(111, 69, 16);
 }
+
+.btn-primary {
+  color: rgb(255, 255, 255);
+  background-color: #a52fff;
+  border-color: #a52fff;
+  margin: 10px 20px
+}
+
+.btn-primary:hover {
+  color: white;
+  background-color: #7f3dfa;
+  border-color: #7f3dfa;
+
+}

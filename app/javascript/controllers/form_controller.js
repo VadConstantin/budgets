@@ -21,3 +21,5 @@ export default class extends Controller {
     }
   }
 }
+
+let allo = "bonjour";
