@@ -247,7 +247,8 @@
 }
 
 .home-card:hover {
-  transition: 0.5s;
+  transition: 1s;
+  background: none;
 }
 
 .anim-background {
@@ -461,12 +462,13 @@ color: white;
     margin-top: 15px !important;
     flex-direction: column;
     justify-content: center;
-    gap: 10px;
+    gap: 30px;
   }
 
   .hidden-card-button,
   .hidden-card-button-2 {
     width: 100%;
+    font-size: 20px !important;
   }
 
   .with-x {
@@ -523,7 +525,7 @@ color: white;
 
   .home-card {
     width: 45%;
-    height: 34vw;
+    height: 42vw;
     padding-top: 10px;
   }
 
@@ -592,7 +594,7 @@ color: white;
     color: #6030fd;
     margin-right: 0;
     position: absolute;
-    top: 410px;
+    top: 105vw;
   }
 
   .home-slogan {
@@ -618,7 +620,7 @@ color: white;
   }
 
   .mobile-budgets-title {
-    padding-top: 0;
+    padding-top: 10px;
   }
 
   .home-right-container {
@@ -631,7 +633,7 @@ color: white;
   }
 
   .home-cards-container {
-    margin-top: 10px !important;
+    margin-top: 20px !important;
   }
 
   .home-card .sci li {
@@ -657,7 +659,33 @@ color: white;
     color: #6030fd;
     margin-right: 0;
     position: absolute;
-    top: 90vw;
+    top: 106vw;
+  }
+}
+
+@media (max-width: 400px) {
+  .create-budget-button,
+  .create-budget-button-disable {
+    background-color: #f8fff1;
+    border-radius: 9px;
+    font-size: 13px;
+    color: #6030fd;
+    margin-right: 0;
+    position: absolute;
+    top: 110vw;
+  }
+}
+
+@media (max-width: 350px) {
+  .create-budget-button,
+  .create-budget-button-disable {
+    background-color: #f8fff1;
+    border-radius: 9px;
+    font-size: 13px;
+    color: #6030fd;
+    margin-right: 0;
+    position: absolute;
+    top: 113vw;
   }
 }
 
@@ -670,6 +698,6 @@ color: white;
     color: #6030fd;
     margin-right: 0;
     position: absolute;
-    top: 94vw;
+    top: 115vw;
   }
 }
