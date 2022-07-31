@@ -13,4 +13,13 @@ class User < ApplicationRecord
   has_many :user_payments, class_name: 'UserPayment'
   has_many :payments, through: :user_payments
 
+  def last_payments
+    budgets = self.budgets
+    payments = []
+    budgets.each do |budget|
+      payments << budget.payments
+    end
+    return payments.flatten.sort_by { |p| p.updated_at }.reverse!.last(10)
+  end
+
 end

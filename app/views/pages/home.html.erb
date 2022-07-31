@@ -136,6 +136,17 @@
   <% end %>
 </div>
 
-<div class="last-payments-container">
-<h2>List of payments</h2>
-</div>
+<% if current_user %>
+  <div class="last-payments-container">
+    <h2>List of payments</h2>
+
+    <% current_user.last_payments.each do |payment| %>
+    <div>
+      <h4>payment id: <%= payment.id %></h4>
+      <p><%= payment.sender_name(current_user) %> paid <%= payment.montant_cents %> €</p>
+      <p>for <%= payment.receiver_name(current_user) %></p>
+    </div>
+    <% end %>
+
+  </div>
+<% end %>

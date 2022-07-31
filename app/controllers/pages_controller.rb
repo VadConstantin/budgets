@@ -3,6 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @budgets = Budget.all
+    @payments = Payment.all.sort_by { |p| p.updated_at }.reverse!
   end
 
 end
