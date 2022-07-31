@@ -69,7 +69,8 @@
   border: 0px solid white;
   overflow: hidden;
   box-shadow: 0 5px 25px #0e0c1636;
-  flex-grow: 1;
+  max-height: 400px;
+  // flex-grow: 1;
   margin: 10px;
   width: 430px;
   overflow: hidden;
@@ -91,6 +92,16 @@
     background-color: #4c239a;
     color: white !important;
   }
+}
+
+.create-budget-button-disable {
+  background-color: #f8fff1;
+  padding: 8px 18px;
+  align-items: center;
+  border-radius: 9px;
+  color: #9e30fd;
+  margin-right: 11px;
+  opacity: 0.4;
 }
 
 .contentBx {

@@ -9,11 +9,15 @@
       <% end %>
     </div>
 
-
     <div class="home-right-container">
         <div class="right-section-titles">
           <h3 id="diff-budgets">Tes differents budgets</h3>
-          <%= link_to "Create New Budget", new_budget_path, class:"create-budget-button" %>
+          <% if UserBudget.where(user_id: current_user.id).length > 3 %>
+            <%= link_to "Create New Budget", "#", class:"create-budget-button-disable", data: { confirm: 'You reached the maximum amount of 4 budgets. Delete a budget before creating a new one !' } %>
+          <% else %>
+            <%= link_to "Create New Budget", new_budget_path, class:"create-budget-button" %>
+          <% end %>
+
         </div>
 
         <% if @budgets.length == 0 %>
@@ -27,9 +31,6 @@
                   <% budget_ids << u.id %>
                 <% end %>
                 <% if current_user && budget_ids.include?(current_user.id) %>
-
-
-
                     <div class="home-card">
                       <div class="content">
                         <div class="contentBx">
