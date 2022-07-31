@@ -91,6 +91,8 @@ label {
     padding: 0;
     justify-content: end;
     position: relative;
+    flex-direction: initial !important;
+    margin-top: 70px;
   }
 
   .retour {
@@ -105,6 +107,7 @@ label {
     border-top-left-radius: 50px;
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
+    width: 100%;
   }
 
   .btn-primary {
