@@ -32,10 +32,11 @@
   flex-direction: column;
 }
 
-.centre {
+.home-card-title {
   position: relative;
-  color: #803dfa;
+  color: #4c239a;
   text-align: center;
+  font-weight: 700;
 }
 
 .right-section-titles {
@@ -70,6 +71,7 @@
   flex-grow: 1;
   margin: 10px;
   width: 430px;
+  overflow: hidden;
 
   &:hover {
     text-decoration: none;
@@ -98,11 +100,14 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  transition: 0.5s;
+  transition: 0.6s;
+  z-index: 10;
 }
 
 .home-card:hover .content {
-  transform: translateY(-80px);
+  transform: translateY(-30vh);
+  color: #f8fff1;
+  opacity: 0.7;
 }
 
 .home-card .content .imgBx {
@@ -129,8 +134,9 @@
 
 .home-card .sci {
   position: absolute;
-  bottom: 150px;
   display: flex;
+  flex-direction: column;
+  z-index: 10;
 }
 
 .home-card .sci li {
@@ -146,7 +152,42 @@
   opacity: 1;
 }
 
-.home-card .sci li a {
-  color: #fff;
-  font-size: 20px;
+.home-card .sci li p {
+  color: rgb(255, 255, 255);
+  margin: auto;
+}
+
+.home-card .sci li > * {
+  color: rgb(255, 255, 255);
+}
+
+.home-card:hover {
+  transition: 0.5s;
+}
+
+.anim-background {
+  background-color: #4c239a;
+  width: 600px;
+  height: 500px;
+  position: absolute;
+  transform: translateY(500px);
+  opacity: 1;
+  transition: 0.8s;
+  left: 0;
+}
+
+.home-card:hover .anim-background {
+  transform: translateY(0px);
+  opacity: 1;
+}
+
+.hidden-card-title {
+  font-size: 25px;
+  margin: auto;
+  position: relative;
+  bottom: 50px;
+}
+
+.hidden-display-flex {
+  display: flex;
 }

@@ -71,20 +71,40 @@
                     <div class="home-card">
                       <div class="content">
                         <div class="contentBx">
-                          <h2>Lion</h2>
+                          <h3 class="home-card-title"><%=budget.name %></h3>
                         </div>
                       </div>
                       <ul class="sci">
                         <li>
-                          <a href="">happy</a>
+                          <p class="hidden-card-title"><%=budget.name %> </p>
                         </li>
                         <li>
-                          <a href="">birth</a>
-                        </li>
-                        <li>
-                          <a href="">day</a>
+                          <p>
+                            <div class="hidden-display-flex">
+
+                              <div class="hidden-flex-item">
+                                <div>
+                                  Total spent
+                                </div>
+                                <div>
+                                  <%=budget.total_cents %>€
+                                </div>
+                              </div>
+
+                              <div class="hidden-item-flex">
+                                <div>
+                                  Balance
+                                </div>
+                                <div>
+                                  <%=budget.total_cents %>€
+                                </div>
+                              </div>
+
+                            </div>
+                          </p>
                         </li>
                       </ul>
+                      <div class="anim-background"></div>
                     </div>
 
 
