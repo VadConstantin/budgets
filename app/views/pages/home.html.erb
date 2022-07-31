@@ -1,6 +1,7 @@
 <div class="home-container">
 
   <% if current_user %>
+    <% @skip_navbar = false %>
     <div class="home-left-right-container">
 
       <div class="home-left-container">
@@ -112,9 +113,25 @@
       </div>
     </div>
   <% else %>
+    <% @skip_navbar = true %>
     <div class="no-current-user-container">
       <div class="animate-character torn-home-title">KOOL</div>
       <div class="home-slogan">Good accounts <br> make good friends.</div>
+      <div class="home-signup-buttons-container">
+
+        <%= link_to new_user_session_path do %>
+          <div id="login-button">
+            Log In
+          </div>
+        <% end %>
+
+        <%= link_to new_user_registration_path do %>
+          <div id="create-button">
+            Create Account
+          </div>
+        <% end %>
+
+      </div>
     </div>
   <% end %>
 </div>

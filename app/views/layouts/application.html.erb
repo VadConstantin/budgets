@@ -13,7 +13,7 @@
   </head>
 
   <body class="main-background">
-    <%= render 'shared/navbar' %>
+    <%= render 'shared/navbar' unless @skip_navbar %>
     <div class="white-rectangle"></div>
     <%= render 'shared/flashes' %>
     <%= yield %>
