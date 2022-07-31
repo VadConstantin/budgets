@@ -76,6 +76,15 @@ label {
   border-color: #7322b2;
 }
 
+@media (max-width: 500px) {
+  .animate-character {
+    display: inline-block;
+    position: absolute;
+    top: -109px;
+    font-size: 100px;
+  }
+}
+
 @media (max-width: 420px) {
   .devise-form-container {
     bottom: 0;
@@ -118,13 +127,6 @@ label {
 
   .higher {
     height: 80vh;
-  }
-
-  .animate-character {
-    display: inline-block;
-    position: absolute;
-    top: -109px;
-    font-size: 100px;
   }
 
   .main-background {

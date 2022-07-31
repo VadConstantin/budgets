@@ -71,7 +71,7 @@
 
 .home-left-container {
   flex: 1;
-  background-color: #f8fff1;
+  background-color: #ffffff;
   padding: 20px 20px;
   border-radius: 15px;
   max-width: 400px;
@@ -372,7 +372,7 @@
 //  ------------------------ LIST OF PAYMENTS ---------------------------
 
 .last-payments-container {
-color: white;
+  color: white;
 }
 
 
@@ -597,8 +597,10 @@ color: white;
     top: 105vw;
   }
 
+
+
   .home-slogan {
-    bottom: 120px;
+    bottom: 70px;
     font-size: 20px;
     line-height: 25px;
   }
