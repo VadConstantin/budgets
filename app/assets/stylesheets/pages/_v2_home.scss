@@ -296,7 +296,7 @@
 }
 
 .hidden-flex-item {
-  background: #bd3dff;
+  background: #2c2f5a;
   padding: 20px;
   border-radius: 10px;
   flex: 1;
@@ -308,7 +308,7 @@
 }
 
 .hidden-flex-item-2 {
-  background: #bd3dff;
+  background: #2c2f5a;
   padding: 20px;
   border-radius: 10px;
   flex: 1;
@@ -366,6 +366,12 @@
   display: block;
 }
 
+
+//  ------------------------ LIST OF PAYMENTS ---------------------------
+
+.last-payments-container {
+color: white;
+}
 
 
 
@@ -533,7 +539,7 @@
   }
 
   .with-x {
-    font-size: 12px !important;
+    font-size: 16px !important;
   }
 
   .home-card-title {
@@ -583,7 +589,7 @@
     color: #6030fd;
     margin-right: 0;
     position: absolute;
-    top: 360px;
+    top: 340px;
   }
 
   .home-slogan {
@@ -614,6 +620,26 @@
 
   .home-right-container {
     padding: 0px 0px;
+  }
+
+  .home-container {
+    margin: 40px auto;
+  }
+
+  .home-cards-container {
+    margin-top: 10px !important;
+  }
+
+  .home-card .sci li {
+    margin: 0;
+  }
+
+  .home-card .sci li p {
+    margin: -5px;
+  }
+
+  .with-x {
+    font-size: 16px !important;
   }
 
 }
