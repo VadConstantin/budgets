@@ -35,7 +35,7 @@
                       <div class="content">
                         <div class="contentBx">
                           <h3 class="home-card-title"><%= budget.name %></h3>
-                          <h5><%= budget.debt_status(current_user) %></h5>
+                          <h5 class="owe-content"><%= budget.debt_status(current_user) %></h5>
                         </div>
                       </div>
                       <ul class="sci">
@@ -43,8 +43,8 @@
                           <p>
                             <%= link_to(budget) do %>
                               <div class="hidden-card-title-container">
-                                <p class="hidden-card-title" style="font-size: 2.5vw"> <%= budget.name %> </p>
-                                <p class="hidden-card-title">with <%= budget.other_participant(current_user)[0].capitalize %></p>
+                                <p class="hidden-card-title home-card-link" style="font-size: 2.5vw"> <%= budget.name %> </p>
+                                <p class="hidden-card-title with-x">with <%= budget.other_participant(current_user)[0].capitalize %></p>
                               </div>
                             <% end %>
                           </p>
@@ -62,7 +62,7 @@
                               </div>
 
                               <div class="hidden-flex-item-2">
-                                <div>
+                                <div id="balance">
                                   Balance
                                 </div>
                                 <div style="font-size: 15px !important;">
