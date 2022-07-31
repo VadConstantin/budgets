@@ -15,38 +15,22 @@
     width: 100%;
 }
 
-.card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: rgba(44, 44, 75, 0.086);
-    background-clip: border-box;
-    border-radius: 10px;
-    list-style: none;
-    padding-left: 20px;
-    padding-top: 20px;
-    border: 0px solid white;
-    &:hover {
-      text-decoration: none;
-    }
-}
+
 
 .card-payment {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-    word-wrap: break-word;
-    background-color: rgba(44, 44, 75, 0.186);
-    background-clip: border-box;
-    border-radius: 10px;
-    list-style: none;
-    padding-left: 20px;
-    padding-top: 20px;
-    border: 0px solid white;
-    margin-top: 10px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: rgba(44, 44, 75, 0.186);
+  background-clip: border-box;
+  border-radius: 10px;
+  list-style: none;
+  padding-left: 20px;
+  padding-top: 20px;
+  border: 0px solid white;
+  margin-top: 10px;
 }
 
 

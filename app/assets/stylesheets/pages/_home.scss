@@ -12,43 +12,10 @@
   overflow:hidden;
 }
 
-.flex-box-between {
-  display: flex;
-  justify-content: space-between;
-}
-
 #button-home {
   position: relative;
   right: 860px;
   bottom: 3px;
-}
-
-.centre {
-  position: relative;
-  color: rgb(44, 44, 75);
-}
-
-#diff-budgets {
-  color:rgb(44, 44, 75)
-}
-
-.trash {
-  position: relative;
-  right: 53px;
-  top: 35px;
-  height: 40px;
-  width: 40px;
-}
-
-.trash:hover {
-  color: rgb(44, 44, 75)
-  }
-
-.modif {
-  position: relative;
-  left: 310px;
-  font-size: 0px;
-
 }
 
 .modif:hover {

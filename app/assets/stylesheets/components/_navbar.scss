@@ -12,9 +12,16 @@
 }
 
 .nav-link {
-  font-weight: bold;
+  font-weight: 300;
+  color: #9634fc;
 }
 
 .navbar-light .navbar-nav .active>.nav-link {
-  color: rgb(75, 62, 44);
+  color: #9634fc;
+  font-weight: 300;
+  padding-right: 30px;
+}
+
+.navbar a {
+  color: #9634fc;
 }
