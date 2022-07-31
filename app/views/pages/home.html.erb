@@ -26,45 +26,7 @@
                 <% budget.users.each do |u|%>
                   <% budget_ids << u.id %>
                 <% end %>
-                <% if current_user.nil? == false && budget_ids.include?(current_user.id) %>
-
-                  <%= link_to(budget) do %>
-
-
-
-
-                    <div class="home-card">
-                      <h4 class="text-center"><strong><%=budget.name %></strong> </h4>
-                      <br>
-                      <li><strong>Dépenses totales </strong> <%=budget.total_cents %>€</li>
-
-                      <% @persons = [] %>
-                      <%UserBudget.where(budget_id: budget.id).each do |n| %>
-                        <% @persons << {name: n.user.name, dette: n.dette} %>
-                      <% end %>
-
-                      <% if @persons[1].nil? == false %>
-                        <% if @persons[0][:dette] > @persons[1][:dette]%>
-                          <%=@persons[1][:name]%> doit <%= (@persons[0][:dette]) - (@persons[1][:dette]) %>€ à <%=@persons[0][:name]%>
-                        <% elsif @persons[0][:dette] < @persons[1][:dette]%>
-                          <%=@persons[0][:name]%> doit <%= (@persons[1][:dette]) - (@persons[0][:dette]) %>€ à <%=@persons[1][:name]%>
-                        <% else %>
-                        Vous ne vous devez rien !
-                        <% end %>
-                      <% end %>
-
-                      <br>
-                      <li><span><strong>Participants </strong>
-
-                      <br>
-                      <% budget.user_budgets.each do |n| %>
-                        <%=n.user.name %></span></li>
-                      <% end %>
-
-                      <%#link_to "modifier", edit_budget_path(budget), class:"modif" %>
-                      <%=link_to "Edit", edit_budget_path(budget) %>
-                      <%=link_to "Delete", budget_path(budget), method: :delete, data: { confirm: 'Are you sûr(e)?' } %>
-                    </div>
+                <% if current_user && budget_ids.include?(current_user.id) %>
 
 
 
@@ -78,10 +40,12 @@
                       <ul class="sci">
                         <li>
                           <p>
-                            <div class="hidden-card-title-container">
-                              <p class="hidden-card-title" style="font-size: 2.5vw"> <%= budget.name %> </p>
-                              <p class="hidden-card-title">with <%= budget.other_participant(current_user)[0].capitalize %></p>
-                            </div>
+                            <%= link_to(budget) do %>
+                              <div class="hidden-card-title-container">
+                                <p class="hidden-card-title" style="font-size: 2.5vw"> <%= budget.name %> </p>
+                                <p class="hidden-card-title">with <%= budget.other_participant(current_user)[0].capitalize %></p>
+                              </div>
+                            <% end %>
                           </p>
                         </li>
                         <li>
@@ -130,7 +94,7 @@
                       <div class="anim-background"></div>
                     </div>
 
-                  <% end %>
+
                 <% else %>
                 <% end %>
               <% end %>

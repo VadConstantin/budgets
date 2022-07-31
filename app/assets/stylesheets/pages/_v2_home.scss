@@ -245,6 +245,13 @@
   gap: 30px;
 }
 
+.hidden-card-title-container > a {
+  text-align: center;
+}
+
+.hidden-card-title-container:hover p {
+  color: #d29dff !important;
+}
 
 .hidden-card-button {
   border: 1px solid #f8fff1;
@@ -272,4 +279,8 @@
       color: #4c239a;
       background-color: #f8fff1;
     }
+}
+
+.hidden-card-buttons-container > a {
+  display: block;
 }
