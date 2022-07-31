@@ -93,6 +93,14 @@
   }
 }
 
+.contentBx {
+  text-align: center
+}
+
+.contentBx h5 {
+  color: #4d239a9b;
+}
+
 //  ------- HOVER ANIMATION ON CARDS --------
 
 .home-card .content {
@@ -190,6 +198,7 @@
 
 .hidden-card-title-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
@@ -210,7 +219,7 @@
   padding: 20px;
   border-radius: 10px;
   flex: 1;
-  height: 150px;
+  height: 130px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -218,11 +227,11 @@
 }
 
 .hidden-flex-item-2 {
-  background: #5f4bf2;
+  background: #bd3dff;
   padding: 20px;
   border-radius: 10px;
   flex: 1;
-  height: 150px;
+  height: 130px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -230,7 +239,7 @@
 }
 
 .hidden-card-buttons-container {
-  margin-top: 30px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   gap: 30px;
