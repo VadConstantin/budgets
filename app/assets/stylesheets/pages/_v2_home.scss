@@ -7,6 +7,30 @@
   bottom: 30px;
 }
 
+.no-current-user-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: auto;
+}
+
+.torn-home-title {
+  display: block !important;
+  font-size: 10vw;
+  position: relative;
+  bottom: 80px;
+}
+
+.home-slogan {
+  position: relative;
+  bottom: 80px;
+  font-size: 3vw;
+  color: #f8fff1;
+  text-align: center;
+  line-height: 4vw;
+}
+
 .home-left-right-container {
   display: flex;
   gap: 40px;
@@ -109,6 +133,10 @@
 
 .contentBx h5 {
   color: #4d239a9b;
+}
+
+.mobile-budgets-title {
+  display: none;
 }
 
 //  ------------------ HOVER ANIMATION ON CARDS -------------------------
@@ -412,12 +440,89 @@
 
   .home-card {
     width: 45%;
-    height: 40%;
+    height: 45%;
     padding-top: 10px;
   }
 
   .home-left-container {
     display: none;
+  }
+
+  .home-cards-container {
+    width: 100%;
+  }
+
+  .hidden-card-title {
+    font-size: 30px !important;
+  }
+
+  .with-x {
+    font-size: 15px !important;
+  }
+
+}
+
+@media (max-width: 650px) {
+
+  .home-card {
+    width: 45%;
+    height: 34vw;
+    padding-top: 10px;
+  }
+
+  .home-left-container {
+    display: none;
+  }
+
+  .home-cards-container {
+    width: 100%;
+  }
+
+  .hidden-card-title {
+    font-size: 20px !important;
+  }
+
+  .with-x {
+    font-size: 12px !important;
+  }
+
+}
+
+@media (max-width: 550px) {
+
+  .hidden-flex-item-2 {
+    display: none;
+  }
+
+  .home-right-container {
+    padding: 20px 0px;
+  }
+
+  .home-cards-container {
+    align-content: flex-start;
+  }
+
+  .mobile-budgets-title {
+    display: block;
+    text-align: center;
+    padding-top: 30px;
+    font-size: 20px;
+    letter-spacing: -1px;
+    color: white;
+  }
+
+}
+
+@media (max-width: 400px) {
+
+.create-budget-button {
+  background-color: #f8fff1;
+  border-radius: 9px;
+  font-size: 13px;
+  color: #6030fd;
+  margin-right: 0;
+  position: absolute;
+  top: 400px;
   }
 
 }
