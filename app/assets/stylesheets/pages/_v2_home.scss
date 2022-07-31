@@ -90,7 +90,7 @@
 
   &:hover {
     background-color: #4c239a;
-    color: white !important;
+    color: #f8fff1 !important;
   }
 }
 
@@ -112,7 +112,7 @@
   color: #4d239a9b;
 }
 
-//  ------- HOVER ANIMATION ON CARDS --------
+//  ------------------ HOVER ANIMATION ON CARDS -------------------------
 
 .home-card .content {
   position: relative;
@@ -193,7 +193,7 @@
 
 .anim-background {
   background-color: #4c239a;
-  width: 600px;
+  width: 100%;
   height: 500px;
   position: absolute;
   transform: translateY(500px);
@@ -261,7 +261,7 @@
 }
 
 .hidden-card-title-container:hover p {
-  color: #d29dff !important;
+  color: #f8fff1 !important;
 }
 
 .hidden-card-button {
@@ -287,11 +287,47 @@
   width: 174px;
   text-align: center;
   &:hover {
-      color: #4c239a;
-      background-color: #f8fff1;
-    }
+    color: #4c239a;
+    background-color: #f8fff1;
+  }
 }
 
 .hidden-card-buttons-container > a {
   display: block;
+}
+
+
+
+
+// ----------------------------SCREEN SIZES------------------------------
+
+@media (max-width: 1439px) {
+  .home-card {
+    width: 45%;
+    height: 50%;
+  }
+
+  .home-card .sci {
+    width: 100%;
+  }
+
+  .hidden-card-button,
+  .hidden-card-button-2 {
+    padding: 10px 20px;
+    width: 10vw;
+  }
+}
+
+@media (max-width: 1250px) {
+  .home-card {
+    width: 100%;
+    height: 50.5%;
+  }
+
+  .main-background {
+    background: linear-gradient(180deg, #a52fff 0%, #5d4bf2 100%);
+    height: 1630px;
+    overflow:visible !important;
+  }
+
 }
