@@ -6,17 +6,19 @@
 @import "v2_home";
 
 .main-background {
-  background: linear-gradient(180deg, rgba(165, 47, 255, 1) 0%, rgba(93, 75, 242, 1) 100%);
+  // background: linear-gradient(180deg, rgba(165, 47, 255, 1) 0%, rgba(93, 75, 242, 1) 100%);
+  background: linear-gradient(180deg, #721eb2 0%, #30229e 100%);
   overflow: hidden;
 }
 
 .white-rectangle {
-  opacity: 3%;
+  opacity: 2%;
   position: absolute;
   width: 50%;
   height: 100%;
   background-color: white;
   z-index: -1;
+  display: none;
 }
 
 a {

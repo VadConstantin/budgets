@@ -17,11 +17,12 @@
 .animate-character {
   display: none;
   text-transform: uppercase;
-  background-image: linear-gradient(-225deg,
-      #f8fff1 0%,
-      #f8fff1 29%,
-      #ffe1fd 67%,
-      #f8fff1 100%);
+  // background-image: linear-gradient(-225deg,
+  //     #f8fff1 0%,
+  //     #f8fff1 29%,
+  //     #ffe1fd 67%,
+  //     #f8fff1 100%);
+  background-image: linear-gradient(-225deg, #f8fff1 0%, #ffc7fa 29%, #98d1cc 67%, #f7fef1 100%);
   background-size: auto auto;
   background-clip: border-box;
   background-size: 200% auto;
@@ -30,7 +31,7 @@
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: textclip 2s linear infinite;
+  animation: textclip 4s linear infinite;
   font-size: 80px;
 }
 
