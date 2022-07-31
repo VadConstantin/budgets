@@ -142,7 +142,6 @@ class PaymentsController < ApplicationController
     @budget.save
 
     if @payment.save
-      raise
       redirect_to budget_path(@budget)
     end
 

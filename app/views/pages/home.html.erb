@@ -3,7 +3,7 @@
 
     <div class="home-left-container">
       <% if current_user %>
-        <h3 class="centre" style="font-weight: bold">Welcome <%=current_user.name %> </h3>
+        <h3 class="home-card-title">Welcome <%=current_user.name %> </h3>
       <% else %>
         <h3>Welcome on TORN !</h3>
       <% end %>
@@ -39,7 +39,7 @@
                       <li><strong>Dépenses totales </strong> <%=budget.total_cents %>€</li>
 
                       <% @persons = [] %>
-                      <strong>Balance: </strong><%UserBudget.where(budget_id: budget.id).each do |n| %>
+                      <%UserBudget.where(budget_id: budget.id).each do |n| %>
                         <% @persons << {name: n.user.name, dette: n.dette} %>
                       <% end %>
 
@@ -63,7 +63,7 @@
 
                       <%#link_to "modifier", edit_budget_path(budget), class:"modif" %>
                       <%=link_to "Edit", edit_budget_path(budget) %>
-                      <%= link_to "Delete", budget_path(budget), method: :delete, data: { confirm: 'Are you sûr(e)?' } %>
+                      <%=link_to "Delete", budget_path(budget), method: :delete, data: { confirm: 'Are you sûr(e)?' } %>
                     </div>
 
 
@@ -71,48 +71,76 @@
                     <div class="home-card">
                       <div class="content">
                         <div class="contentBx">
-                          <h3 class="home-card-title"><%=budget.name %></h3>
+                          <h3 class="home-card-title"><%= budget.name %></h3>
                         </div>
                       </div>
                       <ul class="sci">
                         <li>
-                          <p class="hidden-card-title"><%=budget.name %> </p>
+                          <p>
+                            <div class="hidden-card-title-container">
+                              <p class="hidden-card-title"><%= budget.name %></p>
+                            </div>
+                          </p>
                         </li>
                         <li>
                           <p>
                             <div class="hidden-display-flex">
-
                               <div class="hidden-flex-item">
                                 <div>
                                   Total spent
                                 </div>
-                                <div>
+                                <div style="font-size: 30px !important;">
                                   <%=budget.total_cents %>€
                                 </div>
                               </div>
 
-                              <div class="hidden-item-flex">
+                              <div class="hidden-flex-item-2">
                                 <div>
                                   Balance
                                 </div>
-                                <div>
-                                  <%=budget.total_cents %>€
+                                <div style="font-size: 15px !important;">
+                                  <% @persons = [] %>
+                                  <%UserBudget.where(budget_id: budget.id).each do |n| %>
+                                    <% @persons << {name: n.user.name, dette: n.dette} %>
+                                  <% end %>
+
+                                  <% if @persons[1].nil? == false %>
+                                    <% if @persons[0][:dette] > @persons[1][:dette]%>
+                                      <%=@persons[1][:name]%> owes <%= (@persons[0][:dette]) - (@persons[1][:dette]) %>€ to <%=@persons[0][:name]%>
+                                    <% elsif @persons[0][:dette] < @persons[1][:dette]%>
+                                      <%=@persons[0][:name]%> owes <%= (@persons[1][:dette]) - (@persons[0][:dette]) %>€ to <%=@persons[1][:name]%>
+                                    <% else %>
+                                      Nothing to pay
+                                    <% end %>
+                                  <% end %>
                                 </div>
                               </div>
+                            </div>
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <div class="hidden-card-buttons-container">
+
+                              <%=link_to edit_budget_path(budget) do %>
+                                <div class="hidden-card-button">
+                                  Edit
+                                </div>
+                              <% end %>
+
+                              <%=link_to budget_path(budget), method: :delete, data: { confirm: 'Are you sûr(e)?' } do %>
+                                <div class="hidden-card-button-2">
+                                  Delete
+                                </div>
+                              <% end %>
 
                             </div>
                           </p>
                         </li>
+
                       </ul>
                       <div class="anim-background"></div>
                     </div>
-
-
-
-
-
-
-
 
                   <% end %>
                 <% else %>
