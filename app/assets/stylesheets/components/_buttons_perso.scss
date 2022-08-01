@@ -2,7 +2,7 @@
   display: inline-block;
   font-weight: 400;
   line-height: 1.5;
-  color: #ffffff;
+  color: #f4ffe5;
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
@@ -25,14 +25,16 @@
 }
 
 .btn-primary {
-  color: rgb(255, 255, 255);
-  background-color: #a52fff;
-  border-color: #a52fff;
-  margin: 10px 20px
+  color: #f4ffe5;
+  background-color: #8f10ef;
+  border-color: #8f10ef;
+  margin: 6px 7px;
+  padding: 12px 40px;
+  border-radius: 12px;
 }
 
 .btn-primary:hover {
-  color: white;
+  color: #f4ffe5;
   background-color: #7f3dfa;
   border-color: #7f3dfa;
 }
@@ -40,6 +42,7 @@
 .forgot {
   background-color: #4c239a;
   border-color: #4c239a;
+  padding: 12px 52px !important;
 }
 
 .btn-primary:disabled {

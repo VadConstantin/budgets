@@ -17,7 +17,7 @@
 }
 
 .devise-card {
-  background-color: #f8fff1;
+  background-color: #f4ffe5;
   padding: 50px;
   border-radius: 60px;
   box-shadow: 0 5px 25px #462ead;
@@ -42,7 +42,7 @@
 }
 
 .form-control {
-  background-color: #f8fff1;
+  background-color: #f4ffe5;
   border-color: #c9affc;
 }
 
@@ -71,7 +71,7 @@ label {
   z-index: 1000;
   transform: scale(0.8);
   border-radius: 20px;
-  background-color: #f8fff1;
+  background-color: #f4ffe5;
   color: #7322b2;
   border-color: #7322b2;
 }
@@ -85,7 +85,7 @@ label {
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 500px) {
   .devise-form-container {
     bottom: 0;
     justify-content: end;
@@ -123,6 +123,13 @@ label {
     margin: 10px 10px !important;
     font-size: 13px !important;
     min-width: 190px !important;
+    padding: 15px;
+  }
+
+  .forgot {
+    background-color: #4c239a;
+    border-color: #4c239a;
+    padding: 15px 0px !important;
   }
 
   .higher {
@@ -131,7 +138,10 @@ label {
 
   .main-background {
     height: auto;
+  }
 
+  .display-flex-login-buttons {
+    margin-top: 60px;
   }
 
 }
