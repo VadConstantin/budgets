@@ -19,7 +19,7 @@
                 </div>
                 <div class="payer-receiver">
                   <p id="list-sender"><%= payment.sender_name(current_user) %></p>
-                  <p id="list-receiver"> paid for <%= payment.receiver_name(current_user) %> </p>
+                  <p id="list-receiver"> for <%= payment.receiver_name(current_user) %> </p>
                 </div>
               </div>
 
@@ -95,7 +95,7 @@
                           <p>
                             <div class="hidden-display-flex">
                               <div class="hidden-flex-item">
-                                <div>
+                                <div style="opacity: 0.5">
                                   Total spent
                                 </div>
                                 <div style="font-size: 30px !important;">
@@ -104,10 +104,10 @@
                               </div>
 
                               <div class="hidden-flex-item-2">
-                                <div id="balance">
+                                <div id="balance" style="opacity: 0.5">
                                   Balance
                                 </div>
-                                <div style="font-size: 15px !important;">
+                                <div style="font-size: 16px !important;">
                                   <%= budget.debt_status(current_user) %>
                                 </div>
                               </div>
@@ -180,7 +180,7 @@
           </div>
           <div class="payer-receiver">
             <p id="list-sender"><%= payment.sender_name(current_user) %></p>
-            <p id="list-receiver"> paid for <%= payment.receiver_name(current_user) %> </p>
+            <p id="list-receiver"> for <%= payment.receiver_name(current_user) %> </p>
           </div>
         </div>
 

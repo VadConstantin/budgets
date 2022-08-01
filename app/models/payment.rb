@@ -14,7 +14,7 @@ class Payment < ApplicationRecord
     else
       receveurs = user_payments.select { |u| u.state == "receveur"}.map { |user_payment| user_payment.user_id}   # renvoie un array d'IDs
     end
-    return receveurs.is_a?(Integer) ? (receveurs == arg.id ? "You" : User.find(receveurs).name) : "#{User.find(receveurs.select { |u| u != arg.id})[0].name} + you"
+    return receveurs.is_a?(Integer) ? (receveurs == arg.id ? "You" : User.find(receveurs).name) : "#{User.find(receveurs.select { |u| u != arg.id})[0].name} & you"
   end
 
 
