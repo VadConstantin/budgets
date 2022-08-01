@@ -135,8 +135,6 @@ label {
   }
 
   .forgot {
-    background-color: #4c239a;
-    border-color: #4c239a;
     padding: 15px 0px !important;
   }
 
@@ -147,7 +145,22 @@ label {
 
 
   .display-flex-login-buttons {
-    margin-top: 60px;
+    margin-top: 30px;
   }
 
+}
+
+@media (max-width: 400px) {
+  .devise-card {
+    padding: 50px 25px;
+    transform: scale(0.8);
+    position: relative;
+    bottom: 30px;
+    border-bottom-right-radius: 50px;
+    border-bottom-left-radius: 50px;
+  }
+
+  .devise-container {
+    padding: 0;
+  }
 }

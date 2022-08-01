@@ -113,8 +113,9 @@
 
 .right-section-titles {
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   padding: 0 0 0 10px;
+  gap: 30px;
 }
 
 #diff-budgets {
@@ -152,7 +153,6 @@
   }
 }
 
-
 .create-budget-button {
   background-color: #f4ffe5;
   padding: 8px 18px;
@@ -161,6 +161,8 @@
   color: #27224a;
   margin-right: 16px;
   transition: 0.5s;
+  position: relative;
+  bottom: 3px;
   &:hover {
     background-color: #39396f;
     color: #f4ffe5 !important;
@@ -175,6 +177,8 @@
   color: #27224a;
   margin-right: 16px;
   opacity: 0.5;
+  position: relative;
+  bottom: 3px;
 }
 
 .mobile-create-budget-button {
@@ -555,7 +559,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-content: center;
+    align-content: flex-start;
     gap: 20px;
   }
 
@@ -658,8 +662,8 @@
   }
 
   .home-card {
-    width: 45%;
-    height: 42vw;
+    max-width: 260px;
+    max-height: 260px;
     padding-top: 10px;
   }
 
