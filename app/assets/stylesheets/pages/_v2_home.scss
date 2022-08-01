@@ -1,10 +1,9 @@
 .home-container {
   margin: 0 auto 0 auto;
-  // height: 100vh;
   padding: 0 30px 0 30px;
   display: flex;
   position: relative;
-  background: linear-gradient(180deg, #721eb2 0%, #30229e 100%);
+  background: linear-gradient(180deg, #29234c 0%, #0f0d23 100%);
 }
 
 .mobile-create-budget-button {
@@ -17,6 +16,7 @@
   align-items: center;
   flex-direction: column;
   margin: auto;
+  height: 100vh;
 }
 
 .torn-home-title {
@@ -49,7 +49,7 @@
   font-size: 1.5vw;
   text-align: center;
   &:hover {
-    color: #6030fd;
+    color: #28224b;
     background-color: #f4ffe5;
   }
 }
@@ -62,7 +62,7 @@
   font-size: 1.5vw;
   text-align: center;
   &:hover {
-    color: #6030fd;
+    color: #28224b;
     background-color: #f4ffe5;
   }
 }
@@ -76,11 +76,11 @@
 
 .home-left-container {
   flex: 1;
-  background-color: #2c1852;
-  padding: 20px 0;
+  background-color: #2b285d;
+  padding: 20px 5px 20px 5px;
   border-radius: 15px;
   max-width: 400px;
-  height: 100vh;
+  // height: 100vh;
   margin-bottom: 30px;
 }
 
@@ -293,7 +293,7 @@
 }
 
 .anim-background {
-  background-color: #2c1852;
+  background-color: #2b285d;
   width: 120%;
   height: 500px;
   position: absolute;
@@ -348,7 +348,7 @@
 }
 
 .hidden-flex-item {
-  background: #2c2f5a;
+  background: #60649a;
   padding: 20px;
   border-radius: 10px;
   flex: 1;
@@ -361,7 +361,7 @@
 }
 
 .hidden-flex-item-2 {
-  background: #2c2f5a;
+  background: #60649a;
   padding: 20px;
   border-radius: 10px;
   flex: 1;
@@ -415,7 +415,7 @@
   color: #f4ffe5;
   width: 100%;
   position: relative;
-  background-color: #2c1852;
+  background-color: #2b285d;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   transform: scale(0.9);
@@ -427,7 +427,7 @@
   width: 100%;
   padding: 0 20px 30px;
   position: relative;
-  background-color: #2c1852;
+  background-color: #2b285d;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
 }
@@ -435,6 +435,11 @@
 .home-list-payment {
   display: flex;
   justify-content: space-between;
+  background: #60649a47;
+  border-radius: 14px;
+  padding: 5px 20px;
+  margin: 20px auto;
+  max-width: 600px;
 }
 
 .list-left-section {
@@ -617,6 +622,14 @@
 
 @media (max-width: 990px) {
 
+  #list-sender {
+    font-size: 22px;
+  }
+
+  #list-amount {
+    font-size: 22px;
+  }
+
   .home-left-right-container {
     padding-top: 0;
   }
@@ -718,7 +731,7 @@
     display: block;
     text-align: center;
     padding-top: 30px;
-    font-size: 20px;
+    font-size: 4.4vw;
     letter-spacing: -1px;
     color: white;
   }
@@ -731,6 +744,14 @@
 }
 
 @media (max-width: 500px) {
+
+  .home-list-payment {
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
 
 
   .create-budget-button,
@@ -797,7 +818,7 @@
   }
 
   .with-x {
-    font-size: 20px !important;
+    font-size: 16px !important;
   }
 
 }

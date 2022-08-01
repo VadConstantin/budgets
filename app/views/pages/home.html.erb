@@ -111,7 +111,7 @@
                                     Balance
                                   </div>
 
-                                  <div style="font-size: 16px !important; color: #f4ffe5 !important">
+                                  <div style="font-size: 18px !important; color: #f4ffe5 !important">
                                     <%= budget.debt_status(current_user) %>
                                   </div>
                                 </div>
@@ -146,25 +146,27 @@
     </div>
   <% else %>
     <% @skip_navbar = true %>
-    <div class="no-current-user-container">
-      <div class="animate-character torn-home-title">KOOL</div>
-      <div class="home-slogan">Keep your friends, <br> pay up !</div>
-      <div class="home-signup-buttons-container">
 
-        <%= link_to new_user_session_path do %>
-          <div id="login-button">
-            Log In
-          </div>
-        <% end %>
+      <div class="no-current-user-container">
+        <div class="animate-character torn-home-title">KOOL</div>
+        <div class="home-slogan">Keep your friends, <br> pay up !</div>
+        <div class="home-signup-buttons-container">
 
-        <%= link_to new_user_registration_path do %>
-          <div id="create-button">
-            Create Account
-          </div>
-        <% end %>
+          <%= link_to new_user_session_path do %>
+            <div id="login-button">
+              Log In
+            </div>
+          <% end %>
 
+          <%= link_to new_user_registration_path do %>
+            <div id="create-button">
+              Create Account
+            </div>
+          <% end %>
+
+        </div>
       </div>
-    </div>
+
   <% end %>
 
   <% if current_user %>

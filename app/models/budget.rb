@@ -10,9 +10,9 @@ class Budget < ApplicationRecord
     UserBudget.where(budget_id: self.id).each { |n| persons << { name: n.user.name, dette: n.dette } }
     if persons[1]
       if persons[0][:dette] > persons[1][:dette]
-        return "#{persons[1][:name] == current_user.name ? "You owe" : "#{persons[1][:name]} owes"} #{(persons[0][:dette]) - (persons[1][:dette])} € to #{persons[0][:name] == current_user.name ? "You" : persons[0][:name]}"
+        return "#{persons[1][:name] == current_user.name ? "You owe" : "#{persons[1][:name]} owes"} #{(persons[0][:dette]) - (persons[1][:dette])}€ to #{persons[0][:name] == current_user.name ? "You" : persons[0][:name]}"
       elsif persons[0][:dette] < persons[1][:dette]
-        return "#{persons[0][:name] == current_user.name ? "You owe" : "#{persons[0][:name]} owes"} #{(persons[1][:dette]) - (persons[0][:dette])} € to #{persons[1][:name] == current_user.name ? "You" : persons[1][:name]}"
+        return "#{persons[0][:name] == current_user.name ? "You owe" : "#{persons[0][:name]} owes"} #{(persons[1][:dette]) - (persons[0][:dette])}€ to #{persons[1][:name] == current_user.name ? "You" : persons[1][:name]}"
       else
         return "Nothing to pay"
       end

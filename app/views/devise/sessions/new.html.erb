@@ -1,29 +1,31 @@
 <% @skip_navbar = true %>
+<div class="devise-container">
 
-<div class="devise-form-container">
-  <div class="devise-card">
+  <div class="devise-form-container">
+    <div class="devise-card">
 
-    <h2>Log in 🤙🏼</h2>
-    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="form-inputs">
-        <%= f.input :name,
-                    required: true,
-                    autofocus: true %>
-        <%= f.input :email,
-                    required: true,
-                    autofocus: true,
-                    input_html: { autocomplete: "email" } %>
-        <%= f.input :password,
-                    required: true,
-                    input_html: { autocomplete: "current-password" } %>
-        <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-      </div>
+      <h2>Log in 🤙🏼</h2>
+      <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="form-inputs">
+          <%= f.input :name,
+                      required: true,
+                      autofocus: true %>
+          <%= f.input :email,
+                      required: true,
+                      autofocus: true,
+                      input_html: { autocomplete: "email" } %>
+          <%= f.input :password,
+                      required: true,
+                      input_html: { autocomplete: "current-password" } %>
+          <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
+        </div>
 
-      <div class="form-actions display-flex-login-buttons">
-          <%= f.button :submit, "Log in", class: "btn btn-primary" %>
-          <%= render "devise/shared/links" %>
-      </div>
-    <% end %>
+        <div class="form-actions display-flex-login-buttons">
+            <%= f.button :submit, "Log in", class: "btn btn-primary" %>
+            <%= render "devise/shared/links" %>
+        </div>
+      <% end %>
+    </div>
+    <%= link_to "Go Back", :back, style: "color: white; position: relative; top: 20px; text-align: center", class:"devise-back-link" %>
   </div>
-  <%= link_to "Go Back", :back, style: "color: white; position: relative; top: 20px; text-align: center", class:"devise-back-link" %>
 </div>

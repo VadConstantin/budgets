@@ -1,3 +1,11 @@
+.devise-container {
+  margin: 0 auto 0 auto;
+  padding: 0 30px 0 30px;
+  display: flex;
+  position: relative;
+  background: linear-gradient(180deg, #29234c 0%, #0f0d23 100%);
+}
+
 .devise-form-container {
   max-width: 560px;
   margin: auto;
@@ -20,17 +28,17 @@
   background-color: #f4ffe5;
   padding: 50px;
   border-radius: 60px;
-  box-shadow: 0 5px 25px #462ead;
+  box-shadow: 0 5px 25px #160f36;
 }
 
 .devise-card h2 {
-  color: #7f3dfa;
+  color: #1d1939;
   font-weight: 900;
   text-align: center;
 }
 
 .devise-card .form-label {
-  color: #7f3dfa;
+  color: #201c3e;
   font-weight: 300;
   text-align: center;
 }
@@ -43,7 +51,7 @@
 
 .form-control {
   background-color: #f4ffe5;
-  border-color: #c9affc;
+  border-color: #1d1939;
 }
 
 label {
@@ -52,7 +60,7 @@ label {
 
 .form-check-label {
   padding-left: 20px;
-  color: #803dfa;
+  color: #282249;
 }
 
 .form-check {
