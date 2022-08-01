@@ -12,24 +12,23 @@
             <div class="list-title">Last Payments</div>
             <% current_user.last_payments.each do |payment| %>
 
-          <%= link_to budget_path(payment.budget, payment_id: payment.id, anchor: payment.id) do %>
-            <div class="home-list-payment make-link-fonts-white">
-              <div class="list-left-section">
-                <div class="list-picture">
-                </div>
-                <div class="payer-receiver">
-                  <p id="list-sender"><%= payment.sender_name(current_user) %></p>
-                  <p id="list-receiver"> for <%= payment.receiver_name(current_user) %> </p>
-                </div>
-              </div>
+              <%= link_to budget_path(payment.budget, payment_id: payment.id, anchor: payment.id) do %>
+                <div class="home-list-payment make-link-fonts-white">
+                  <div class="list-left-section">
+                    <div class="list-picture">
+                    </div>
+                    <div class="payer-receiver">
+                      <p id="list-sender"><%= payment.sender_name(current_user) %></p>
+                      <p id="list-receiver"> for <%= payment.receiver_name(current_user) %> </p>
+                    </div>
+                  </div>
 
-              <div class="list-right-section">
-                  <p id="list-amount">€<%= payment.montant_cents %></p>
-                  <p id="list-comment"> <%= payment.small_comment %></p>
-              </div>
-            </div>
-          <% end %>
-
+                  <div class="list-right-section">
+                      <p id="list-amount">€<%= payment.montant_cents %></p>
+                      <p id="list-comment"> <%= payment.small_comment %></p>
+                  </div>
+                </div>
+              <% end %>
 
             <% end %>
           </div>
@@ -42,6 +41,7 @@
 
                 <div class="mobile-headers-container">
                   <h3 id="diff-budgets">All your budgets</h3>
+                  <%# ------------------ CREATE BUDGET BUTTONS --------------------%>
                   <% if UserBudget.where(user_id: current_user.id).length > 3 %>
                     <%= link_to "+", "#", class:"mobile-create-budget-button-disable", data: { confirm: 'You reached the maximum amount of 4 budgets. Delete a budget before creating a new one !' } %>
                   <% else %>
@@ -61,18 +61,9 @@
             Your budgets
           </div>
 
-          <% if @budgets.length == 0 %>
-          <h6> Pas encore de budget !</h6>
-          <% else %>
             <ul style="flex-grow: 2; display: flex">
               <div class="home-cards-container">
-                <% @budgets.sort_by { |p| p.updated_at }.reverse!.each do |budget| %>
-                  <% budget_ids = [] %>
-                  <% budget.users.each do |u|%>
-                    <% budget_ids << u.id %>
-                  <% end %>
-                  <% if current_user && budget_ids.include?(current_user.id) %>
-
+                <% current_user.budgets.sort_by { |p| p.updated_at }.reverse!.each do |budget| %>
 
                     <div class="home-card">
 
@@ -96,14 +87,13 @@
                         <li>
                           <p>
 
-
                             <div class="hidden-display-flex">
                               <div class="hidden-flex-item">
                                 <div style="opacity: 0.5">
                                   Total spent
                                 </div>
                                 <div style="font-size: 30px !important;">
-                                  <%=budget.total_cents %>€
+                                  <%= budget.total_cents %>€
                                 </div>
                               </div>
 
@@ -120,8 +110,6 @@
                               <% end %>
                             </div>
 
-
-
                           </p>
                         </li>
                         <li>
@@ -130,19 +118,14 @@
                         </li>
                       </ul>
 
-
                         <div class="anim-background"></div>
-
 
                     </div>
 
-
-                  <% else %>
-                  <% end %>
                 <% end %>
               </div>
             </ul>
-          <% end %>
+
       </div>
 
     </div>
@@ -175,30 +158,25 @@
     <div class="last-payments-container">
       <div class="list-title">Last Payments</div>
       <% current_user.last_payments.each do |payment| %>
+        <%= link_to budget_path(payment.budget, payment_id: payment.id, anchor: payment.id) do %>
+          <div class="home-list-payment make-link-fonts-white">
 
-
-      <%= link_to budget_path(payment.budget, payment_id: payment.id) do %>
-        <div class="home-list-payment make-link-fonts-white">
-
-          <div class="list-left-section">
-            <div class="list-picture">
+            <div class="list-left-section">
+              <div class="list-picture">
+              </div>
+              <div class="payer-receiver">
+                <p id="list-sender"><%= payment.sender_name(current_user) %></p>
+                <p id="list-receiver"> for <%= payment.receiver_name(current_user) %> </p>
+              </div>
             </div>
-            <div class="payer-receiver">
-              <p id="list-sender"><%= payment.sender_name(current_user) %></p>
-              <p id="list-receiver"> for <%= payment.receiver_name(current_user) %> </p>
+
+            <div class="list-right-section">
+                <p id="list-amount">€<%= payment.montant_cents %></p>
+                <p id="list-comment"> <%= payment.small_comment %></p>
             </div>
+
           </div>
-
-          <div class="list-right-section">
-              <p id="list-amount">€<%= payment.montant_cents %></p>
-              <p id="list-comment"> <%= payment.small_comment %></p>
-          </div>
-
-        </div>
-      <% end %>
-
-
-
+        <% end %>
       <% end %>
     </div>
   <% end %>

@@ -22,4 +22,5 @@ class User < ApplicationRecord
     return payments.flatten.sort_by { |p| p.updated_at }.reverse!.last(10)
   end
 
+
 end
