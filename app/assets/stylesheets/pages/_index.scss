@@ -5,6 +5,11 @@
 @import "devise_new";
 @import "v2_home";
 
+html {
+  background: linear-gradient(180deg, rgba(244, 255, 229, 1) 0%, rgba(48, 34, 158, 1) 50%);
+
+}
+
 .main-background {
   background: linear-gradient(180deg, #721eb2 0%, #30229e 100%);
 }
