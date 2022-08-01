@@ -12,8 +12,8 @@
             <div class="list-title">Last Payments</div>
             <% current_user.last_payments.each do |payment| %>
 
-          <%= link_to "#" do %>
-            <div class="home-list-payment no-mobile-link">
+          <%= link_to budget_path(payment.budget, payment_id: payment.id, anchor: payment.id) do %>
+            <div class="home-list-payment make-link-fonts-white">
               <div class="list-left-section">
                 <div class="list-picture">
                 </div>
@@ -176,23 +176,29 @@
       <div class="list-title">Last Payments</div>
       <% current_user.last_payments.each do |payment| %>
 
-      <div class="home-list-payment">
 
-        <div class="list-left-section">
-          <div class="list-picture">
+      <%= link_to budget_path(payment.budget, payment_id: payment.id) do %>
+        <div class="home-list-payment make-link-fonts-white">
+
+          <div class="list-left-section">
+            <div class="list-picture">
+            </div>
+            <div class="payer-receiver">
+              <p id="list-sender"><%= payment.sender_name(current_user) %></p>
+              <p id="list-receiver"> for <%= payment.receiver_name(current_user) %> </p>
+            </div>
           </div>
-          <div class="payer-receiver">
-            <p id="list-sender"><%= payment.sender_name(current_user) %></p>
-            <p id="list-receiver"> for <%= payment.receiver_name(current_user) %> </p>
+
+          <div class="list-right-section">
+              <p id="list-amount">€<%= payment.montant_cents %></p>
+              <p id="list-comment"> <%= payment.small_comment %></p>
           </div>
-        </div>
 
-        <div class="list-right-section">
-            <p id="list-amount">€<%= payment.montant_cents %></p>
-            <p id="list-comment"> <%= payment.small_comment %></p>
         </div>
+      <% end %>
 
-      </div>
+
+
       <% end %>
     </div>
   <% end %>

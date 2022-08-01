@@ -25,7 +25,7 @@ class Payment < ApplicationRecord
   end
 
   def small_comment
-    self.commentaire.length > 25 ? self.commentaire[0..25] + "..." : self.commentaire
+    self.commentaire.length > 22 ? self.commentaire[0..22] + "..." : self.commentaire
   end
 
 end
