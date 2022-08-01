@@ -24,4 +24,8 @@ class Payment < ApplicationRecord
     return sender == arg.id ? "You" : User.find(sender).name
   end
 
+  def small_comment
+    self.commentaire.length > 25 ? self.commentaire[0..25] + "..." : self.commentaire
+  end
+
 end

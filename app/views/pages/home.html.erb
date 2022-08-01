@@ -12,8 +12,8 @@
             <div class="list-title">Last Payments</div>
             <% current_user.last_payments.each do |payment| %>
 
-            <div class="home-list-payment">
-
+          <%= link_to "#" do %>
+            <div class="home-list-payment no-mobile-link">
               <div class="list-left-section">
                 <div class="list-picture">
                 </div>
@@ -25,10 +25,12 @@
 
               <div class="list-right-section">
                   <p id="list-amount">€<%= payment.montant_cents %></p>
-                  <p id="list-comment"> <%= payment.commentaire %></p>
+                  <p id="list-comment"> <%= payment.small_comment %></p>
               </div>
-
             </div>
+          <% end %>
+
+
             <% end %>
           </div>
 
@@ -187,7 +189,7 @@
 
         <div class="list-right-section">
             <p id="list-amount">€<%= payment.montant_cents %></p>
-            <p id="list-comment"> <%= payment.commentaire %></p>
+            <p id="list-comment"> <%= payment.small_comment %></p>
         </div>
 
       </div>
