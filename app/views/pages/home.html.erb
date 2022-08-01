@@ -134,19 +134,30 @@
       </div>
     </div>
   <% end %>
-</div>
 
-<% if current_user %>
-  <div class="last-payments-container">
-    <h2>List of payments</h2>
+  <% if current_user %>
+    <div class="last-payments-container">
+      <div class="list-title">Last Payments</div>
+      <% current_user.last_payments.each do |payment| %>
 
-    <% current_user.last_payments.each do |payment| %>
-    <div>
-      <h4>payment id: <%= payment.id %></h4>
-      <p><%= payment.sender_name(current_user) %> paid <%= payment.montant_cents %> €</p>
-      <p>for <%= payment.receiver_name(current_user) %></p>
+      <div class="home-list-payment">
+
+        <div class="list-left-section">
+          <div class="list-picture">
+          </div>
+          <div class="payer-receiver">
+            <p id="list-sender"><%= payment.sender_name(current_user) %></p>
+            <p id="list-receiver"> paid for <%= payment.receiver_name(current_user) %> </p>
+          </div>
+        </div>
+
+        <div class="list-right-section">
+            <p id="list-amount">€<%= payment.montant_cents %></p>
+            <p id="list-comment"> <%= payment.commentaire %></p>
+        </div>
+
+      </div>
+      <% end %>
     </div>
-    <% end %>
-
-  </div>
-<% end %>
+  <% end %>
+</div>
