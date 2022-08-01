@@ -56,7 +56,7 @@
           </div>
 
           <div class="mobile-budgets-title">
-            All your budgets
+            Your budgets
           </div>
 
           <% if @budgets.length == 0 %>
@@ -85,7 +85,7 @@
                           <p>
                             <%= link_to(budget) do %>
                               <div class="hidden-card-title-container">
-                                <p class="hidden-card-title home-card-link" style="font-size: 2.5vw"> <%= budget.name %> </p>
+                                <p class="hidden-card-title home-card-link"> <%= budget.name %> </p>
                                 <p class="hidden-card-title with-x">with <%= budget.other_participant(current_user)[0].capitalize %></p>
                               </div>
                             <% end %>

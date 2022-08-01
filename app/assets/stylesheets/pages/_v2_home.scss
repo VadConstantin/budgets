@@ -1,10 +1,10 @@
 .home-container {
-  margin: 60px auto;
-  height: 100vh;
+  margin: 0 auto 0 auto;
+  // height: 100vh;
   padding: 0 30px 0 30px;
   display: flex;
   position: relative;
-  bottom: 30px;
+  background: linear-gradient(180deg, #721eb2 0%, #30229e 100%);
 }
 
 .mobile-create-budget-button {
@@ -71,6 +71,7 @@
   display: flex;
   gap: 0px;
   flex: 1;
+  padding-top: 30px;
 }
 
 .home-left-container {
@@ -107,7 +108,7 @@
   color: #4c239a;
   text-align: center;
   font-weight: 700;
-  font-size: 2.5vw;
+  font-size: 4vw;
 }
 
 .right-section-titles {
@@ -170,7 +171,7 @@
   align-items: center;
   border-radius: 9px;
   color: #9e30fd;
-  margin-right: 11px;
+  margin-right: 23px;
   display: none;
   &:hover {
     background-color: #4c239a;
@@ -194,7 +195,7 @@
   align-items: center;
   border-radius: 9px;
   color: #9e30fd;
-  margin-right: 11px;
+  margin-right: 23px;
   opacity: 0.4;
   display: none;
 }
@@ -308,6 +309,8 @@
   opacity: 1;
 }
 
+
+
 .hidden-card-title-container {
   display: flex;
   flex-direction: column;
@@ -315,11 +318,17 @@
 }
 
 .hidden-card-title {
-  font-size: 20px;
   margin: auto;
   position: relative;
   bottom: 25px;
+  font-size: 5vw;
+  line-height: 60px;
+  padding-bottom: 20px;
+}
 
+.with-x {
+  font-size: 1.8vw !important;
+  opacity: 0.5;
 }
 
 .home-card-link {
@@ -562,11 +571,12 @@
   }
 
   .home-cards-container {
-    gap: 15px;
+    gap: 22px;
+    padding: 0 18px;
   }
 
   .owe-content {
-    font-size: 12px !important;
+    font-size: 2.5vw !important;
   }
 
   .hidden-card-buttons-container {
@@ -607,6 +617,10 @@
 
 @media (max-width: 990px) {
 
+  .home-left-right-container {
+    padding-top: 0;
+  }
+
   .home-card {
     width: 45%;
     height: 42vw;
@@ -634,15 +648,17 @@
   }
 
   .hidden-card-title {
-    font-size: 30px !important;
+    font-size: 60px !important;
+    line-height: 60px;
+    padding-bottom: 30px;
   }
 
   .with-x {
-    font-size: 15px !important;
+    font-size: 25px !important;
   }
 
   .home-right-container {
-    margin-bottom: 70px !important;
+    margin-bottom: 30px !important;
   }
 
 }
@@ -651,7 +667,7 @@
 
   .home-card {
     width: 45%;
-    height: 42vw;
+    height: 38vw;
     padding-top: 10px;
   }
 
@@ -664,16 +680,18 @@
   }
 
   .hidden-card-title {
-    font-size: 20px !important;
+    font-size: 25px !important;
+    line-height: 30px;
+    padding-bottom: 13px;
   }
 
   .with-x {
-    font-size: 16px !important;
+    font-size: 17px !important;
   }
 
   .home-card-title {
     font-weight: 700;
-    font-size: 20px;
+    font-size: 5vw;
   }
 
 }
@@ -684,7 +702,7 @@
 
   .hidden-flex-item-2 {
     display: block;
-    width: 250px;
+    width: 180px;
     height: auto;
   }
 
@@ -707,7 +725,7 @@
 
   .home-card-title {
     font-weight: 700;
-    font-size: 18px;
+    font-size: 5vw;
   }
 
 }
@@ -750,7 +768,7 @@
 
   .home-card-title {
     font-weight: 700;
-    font-size: 15px;
+    font-size: 5vw;
   }
 
   .mobile-budgets-title {
@@ -762,12 +780,12 @@
   }
 
   .home-container {
-    margin: 40px auto;
+    margin: 0 auto 0 auto;
     padding: 0;
   }
 
   .home-cards-container {
-    margin-top: 30px !important;
+    margin-top: 20px !important;
   }
 
   .home-card .sci li {
@@ -775,21 +793,21 @@
   }
 
   .home-card .sci li p {
-    margin: -5px;
+    margin: -10px;
   }
 
   .with-x {
-    font-size: 16px !important;
+    font-size: 20px !important;
   }
 
 }
 
 @media (max-width: 400px) {
   .hidden-flex-item-2 {
-      display: block;
-      width: 200px;
-      height: auto;
-    }
+    display: block;
+    width: 180px;
+    height: auto;
+  }
 }
 
 @media (max-width: 300px) {
