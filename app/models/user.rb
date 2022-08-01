@@ -19,8 +19,7 @@ class User < ApplicationRecord
     budgets.each do |budget|
       payments << budget.payments
     end
-    return payments.flatten.sort_by { |p| p.updated_at }.reverse!.last(10)
+    return payments.flatten.sort_by { |p| p.updated_at }.reverse!.last(15)
   end
-
 
 end

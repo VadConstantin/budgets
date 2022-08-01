@@ -1,23 +1,33 @@
-<div class="budget-form-container">
-  <div class="devise-card">
+<% if current_user.budgets.length > 3 %>
 
-    <div class="card-body">
-      <div class="h2 mt-3">Create your budget !</div>
-      <div class="info-log">
-        <%= simple_form_for [@budget] do |f| %>
-          <%= f.input :name, label: "Budget Name" %>
+  <div class="no-new-budget-container">
+    <h4 class="text-center"> You reached the maximum amount of 4 budgets. Delete a budget before creating a new one !</h4>
+    <%= link_to "Go Back", :back, style: "position: relative; top: 20px; text-align: center", class:"devise-back-link text-center"%>
+  </div>
 
-          <div data-controller="form">
-            <%= f.input :participants, collection: @participants, checked: "", legend_tag: true, as: :check_boxes, label: "Who participates with you ?", input_html: { "data-form-target" => "checkbox", "data-action" => "click->form#checker" } %>
+<% else %>
 
-            <div class="display-flex-login-buttons" data-form-target="button">
-                <%= f.button :submit, "Créate budget", class:"btn-primary" %>
+  <div class="budget-form-container">
+    <div class="devise-card">
+
+      <div class="card-body">
+        <div class="h2 mt-3">Create your budget !</div>
+        <div class="info-log">
+          <%= simple_form_for [@budget] do |f| %>
+            <%= f.input :name, label: "Budget Name" %>
+
+            <div data-controller="form">
+              <%= f.input :participants, collection: @participants, checked: "", legend_tag: true, as: :check_boxes, label: "Who participates with you ?", input_html: { "data-form-target" => "checkbox", "data-action" => "click->form#checker" } %>
+
+              <div class="display-flex-login-buttons" data-form-target="button">
+                  <%= f.button :submit, "Créate budget", class:"btn-primary" %>
+              </div>
             </div>
-          </div>
 
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
+    <%= link_to "Go Back", :back, style: "position: relative; top: 20px; text-align: center", class:"devise-back-link"%>
   </div>
-  <%= link_to "Go Back", :back, style: "color: white; position: relative; top: 20px; text-align: center", class:"devise-back-link"%>
-</div>
+<% end %>

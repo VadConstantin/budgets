@@ -84,6 +84,19 @@ label {
   border-color: #7322b2;
 }
 
+.no-new-budget-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  padding: 100px;
+  color: #f4ffe5;
+}
+
+.no-new-budget-container a {
+  color: #f4ffe5 !important;
+}
+
 @media (max-width: 500px) {
   .animate-character {
     display: inline-block;
