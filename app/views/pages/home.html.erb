@@ -8,9 +8,6 @@
         <% if current_user %>
           <h3 class="home-left-card-title">Welcome <%=current_user.name %> </h3>
 
-
-
-
           <div class="no-mobile-payments-container">
             <div class="list-title">Last Payments</div>
             <% current_user.last_payments.each do |payment| %>
@@ -35,10 +32,6 @@
             <% end %>
           </div>
 
-
-
-
-
         <% else %>
           <h3 class="home-left-card-title">Welcome on TORN !</h3>
         <% end %>
@@ -47,12 +40,22 @@
 
       <div class="home-right-container">
           <div class="right-section-titles">
-            <h3 id="diff-budgets">All your budgets</h3>
-              <% if UserBudget.where(user_id: current_user.id).length > 3 %>
-                <%= link_to "Create New Budget", "#", class:"create-budget-button-disable", data: { confirm: 'You reached the maximum amount of 4 budgets. Delete a budget before creating a new one !' } %>
-              <% else %>
-                <%= link_to "Create New Budget", new_budget_path, class:"create-budget-button" %>
-              <% end %>
+
+                <div class="mobile-headers-container">
+                  <h3 id="diff-budgets">All your budgets</h3>
+                  <% if UserBudget.where(user_id: current_user.id).length > 3 %>
+                    <%= link_to "+", "#", class:"mobile-create-budget-button-disable", data: { confirm: 'You reached the maximum amount of 4 budgets. Delete a budget before creating a new one !' } %>
+                  <% else %>
+                    <%= link_to "+", new_budget_path, class:"mobile-create-budget-button" %>
+                  <% end %>
+                </div>
+
+                <% if UserBudget.where(user_id: current_user.id).length > 3 %>
+                  <%= link_to "Create New Budget", "#", class:"create-budget-button-disable", data: { confirm: 'You reached the maximum amount of 4 budgets. Delete a budget before creating a new one !' } %>
+                <% else %>
+                  <%= link_to "Create New Budget", new_budget_path, class:"create-budget-button" %>
+                <% end %>
+
           </div>
 
           <div class="mobile-budgets-title">
@@ -70,86 +73,83 @@
                     <% budget_ids << u.id %>
                   <% end %>
                   <% if current_user && budget_ids.include?(current_user.id) %>
-                      <div class="home-card">
-                        <div class="content">
-                          <div class="contentBx">
-                            <h3 class="home-card-title"><%= budget.name %></h3>
-                            <h5 class="owe-content"><%= budget.debt_status(current_user) %></h5>
-                          </div>
+                    <div class="home-card">
+                      <div class="content">
+                        <div class="contentBx">
+                          <h3 class="home-card-title"><%= budget.name %></h3>
+                          <h5 class="owe-content"><%= budget.debt_status(current_user) %></h5>
                         </div>
-                        <ul class="sci">
-                          <li>
-                            <p>
-                              <%= link_to(budget) do %>
-                                <div class="hidden-card-title-container">
-                                  <p class="hidden-card-title home-card-link" style="font-size: 2.5vw"> <%= budget.name %> </p>
-                                  <p class="hidden-card-title with-x">with <%= budget.other_participant(current_user)[0].capitalize %></p>
+                      </div>
+                      <ul class="sci">
+                        <li>
+                          <p>
+                            <%= link_to(budget) do %>
+                              <div class="hidden-card-title-container">
+                                <p class="hidden-card-title home-card-link" style="font-size: 2.5vw"> <%= budget.name %> </p>
+                                <p class="hidden-card-title with-x">with <%= budget.other_participant(current_user)[0].capitalize %></p>
+                              </div>
+                            <% end %>
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <div class="hidden-display-flex">
+                              <div class="hidden-flex-item">
+                                <div>
+                                  Total spent
+                                </div>
+                                <div style="font-size: 30px !important;">
+                                  <%=budget.total_cents %>€
+                                </div>
+                              </div>
+
+                              <div class="hidden-flex-item-2">
+                                <div id="balance">
+                                  Balance
+                                </div>
+                                <div style="font-size: 15px !important;">
+                                  <%= budget.debt_status(current_user) %>
+                                </div>
+                              </div>
+                            </div>
+                          </p>
+                        </li>
+                        <li>
+                          <p>
+                            <div class="hidden-card-buttons-container">
+
+                              <%=link_to edit_budget_path(budget) do %>
+                                <div class="hidden-card-button">
+                                  Edit
                                 </div>
                               <% end %>
-                            </p>
-                          </li>
-                          <li>
-                            <p>
-                              <div class="hidden-display-flex">
-                                <div class="hidden-flex-item">
-                                  <div>
-                                    Total spent
-                                  </div>
-                                  <div style="font-size: 30px !important;">
-                                    <%=budget.total_cents %>€
-                                  </div>
+
+                              <%=link_to budget_path(budget), method: :delete, data: { confirm: 'Are you sûr(e)?' } do %>
+                                <div class="hidden-card-button-2">
+                                  Delete
                                 </div>
+                              <% end %>
 
-                                <div class="hidden-flex-item-2">
-                                  <div id="balance">
-                                    Balance
-                                  </div>
-                                  <div style="font-size: 15px !important;">
-                                    <%= budget.debt_status(current_user) %>
-                                  </div>
-                                </div>
-                              </div>
-                            </p>
-                          </li>
-                          <li>
-                            <p>
-                              <div class="hidden-card-buttons-container">
-
-                                <%=link_to edit_budget_path(budget) do %>
-                                  <div class="hidden-card-button">
-                                    Edit
-                                  </div>
-                                <% end %>
-
-                                <%=link_to budget_path(budget), method: :delete, data: { confirm: 'Are you sûr(e)?' } do %>
-                                  <div class="hidden-card-button-2">
-                                    Delete
-                                  </div>
-                                <% end %>
-
-                              </div>
-                            </p>
-                          </li>
-                        </ul>
-                        <div class="anim-background"></div>
-                      </div>
-
-
+                            </div>
+                          </p>
+                        </li>
+                      </ul>
+                      <div class="anim-background"></div>
+                    </div>
                   <% else %>
                   <% end %>
                 <% end %>
               </div>
             </ul>
           <% end %>
-
-
       </div>
+
     </div>
   <% else %>
     <% @skip_navbar = true %>
     <div class="no-current-user-container">
       <div class="animate-character torn-home-title">KOOL</div>
-      <div class="home-slogan">Keep your friends, <br> Pay up !</div>
+      <div class="home-slogan">Keep your friends, <br> pay up !</div>
       <div class="home-signup-buttons-container">
 
         <%= link_to new_user_session_path do %>
