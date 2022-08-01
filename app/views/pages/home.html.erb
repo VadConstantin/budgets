@@ -6,11 +6,44 @@
 
       <div class="home-left-container">
         <% if current_user %>
-          <h3 class="home-card-title">Welcome <%=current_user.name %> </h3>
+          <h3 class="home-left-card-title">Welcome <%=current_user.name %> </h3>
+
+
+
+
+          <div class="no-mobile-payments-container">
+            <div class="list-title">Last Payments</div>
+            <% current_user.last_payments.each do |payment| %>
+
+            <div class="home-list-payment">
+
+              <div class="list-left-section">
+                <div class="list-picture">
+                </div>
+                <div class="payer-receiver">
+                  <p id="list-sender"><%= payment.sender_name(current_user) %></p>
+                  <p id="list-receiver"> paid for <%= payment.receiver_name(current_user) %> </p>
+                </div>
+              </div>
+
+              <div class="list-right-section">
+                  <p id="list-amount">€<%= payment.montant_cents %></p>
+                  <p id="list-comment"> <%= payment.commentaire %></p>
+              </div>
+
+            </div>
+            <% end %>
+          </div>
+
+
+
+
+
         <% else %>
-          <h3>Welcome on TORN !</h3>
+          <h3 class="home-left-card-title">Welcome on TORN !</h3>
         <% end %>
       </div>
+
 
       <div class="home-right-container">
           <div class="right-section-titles">

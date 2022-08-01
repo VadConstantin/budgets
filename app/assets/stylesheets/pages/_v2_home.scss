@@ -7,9 +7,6 @@
   bottom: 30px;
 }
 
-.last-payments-container {
-  display: none;
-}
 
 .no-current-user-container {
   display: flex;
@@ -69,17 +66,26 @@
 
 .home-left-right-container {
   display: flex;
-  gap: 40px;
+  gap: 0px;
   flex: 1;
 }
 
 .home-left-container {
   flex: 1;
-  background-color: #ffffff;
-  padding: 20px 20px;
+  background-color: #2c1852;
+  padding: 20px 0;
   border-radius: 15px;
   max-width: 400px;
   margin-bottom: 120px;
+}
+
+.home-left-card-title {
+  position: relative;
+  color: #ffffff;
+  text-align: center;
+  font-weight: 700;
+  font-size: 2vw;
+  padding: 0 10px;
 }
 
 .home-right-container {
@@ -375,12 +381,23 @@
 
 //  ------------------------ LIST OF PAYMENTS ---------------------------
 
+.no-mobile-payments-container {
+  display: block;
+  color: white;
+  width: 100%;
+  position: relative;
+  background-color: #2c1852;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  transform: scale(0.9);
+}
+
 .last-payments-container {
+  display: none;
   color: white;
   width: 100%;
   padding: 0 10px 30px;
   position: relative;
-  // bottom: 340px;
   background-color: #2c1852;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
@@ -583,6 +600,10 @@
 
   .last-payments-container {
     display: block;
+  }
+
+  .no-mobile-payments-container {
+    display: none
   }
 
   .home-left-container {
