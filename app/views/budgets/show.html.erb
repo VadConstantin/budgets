@@ -1,3 +1,5 @@
+<%= @budget.contains_user?(current_user)  %>
+
 <div class="container">
 
     <div class="display-flex-2 mt-4">
@@ -32,14 +34,12 @@
 
     <% if @budget.payments.length > 0 %>
       Payments in this budget :
-      <ul>
+
 
       <% @budget.payments.sort_by { |p| p.updated_at }.reverse!.each do |payment| %>
-
         <%= content_tag :div, id: payment.id do %>
 
           <div class="card-payment pt-4">
-
             <div class="display-flex">
               <div>
                 <li><%= payment.sender_name(current_user) %> paid <%=payment.montant_cents %>€ for :</li>
@@ -59,16 +59,12 @@
                 <li>  <%= link_to "Effacer", budget_payment_path(@budget, payment_id: payment.id), class: "btn-perso-1 me-4", method: :delete, data: { confirm: 'Es-tu sûr(e)?' } %> </li>
               </div>
             </div>
-
           </div>
 
         <% end %>
-
       <% end %>
 
 
-
-      </ul>
     <% else %>
       No payment yet 😊
     <% end %>
@@ -82,3 +78,33 @@
       }
     </script>
 </div>
+
+<% if current_user %>
+  <div class="last-payments-container">
+
+    <div class="list-title">Last Payments</div>
+    <% @budget.payments.each do |payment| %>
+
+      <%= link_to budget_path(payment.budget, payment_id: payment.id, anchor: payment.id) do %>
+        <div class="home-list-payment make-link-fonts-white">
+
+          <div class="list-left-section">
+            <div class="list-picture">
+            </div>
+            <div class="payer-receiver">
+              <p id="list-sender"><%= payment.sender_name(current_user) %></p>
+              <p id="list-receiver"> for <%= payment.receiver_name(current_user) %> </p>
+            </div>
+          </div>
+
+          <div class="list-right-section">
+              <p id="list-amount">€<%= payment.montant_cents %></p>
+              <p id="list-comment"> <%= payment.small_comment %></p>
+          </div>
+
+        </div>
+      <% end %>
+    <% end %>
+
+  </div>
+<% end %>

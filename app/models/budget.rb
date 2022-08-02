@@ -27,4 +27,13 @@ class Budget < ApplicationRecord
     return participants.filter { |user| user != current_user.name}
   end
 
+  def contains_user?(u)
+    ids = []
+    self.users.each do |user|
+      ids << user.id
+    end
+
+    return ids.include?(u.id)
+  end
+
 end
