@@ -1,6 +1,6 @@
 <% if current_user.budgets.length > 3 %>
 
-  <div class="no-new-budget-container">
+  <div class="no-access-message-container">
     <h4 class="text-center"> You reached the maximum amount of 4 budgets. Delete a budget before creating a new one !</h4>
     <%= link_to "Go Back", :back, style: "position: relative; top: 20px; text-align: center", class:"devise-back-link text-center"%>
   </div>
