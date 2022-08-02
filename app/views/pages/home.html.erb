@@ -130,6 +130,7 @@
 
     </div>
   <% else %>
+    <%# ---------------------- no current_user -------------------------- %>
     <% @skip_navbar = true %>
 
       <div class="no-current-user-container">
@@ -158,6 +159,7 @@
     <div class="last-payments-container">
       <div class="list-title">Last Payments</div>
       <% current_user.last_payments.each do |payment| %>
+
         <%= link_to budget_path(payment.budget, payment_id: payment.id, anchor: payment.id) do %>
           <div class="home-list-payment make-link-fonts-white">
 
@@ -178,6 +180,7 @@
           </div>
         <% end %>
       <% end %>
+
     </div>
   <% end %>
 </div>

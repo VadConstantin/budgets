@@ -7,56 +7,42 @@
 
     <br>
     <div class="display-flex">
-        <div>
-          <%= link_to "Ajouter un payment", new_budget_payment_path(@budget.id), class: "btn-perso-1" %>
-        </div>
-        <div>
-          <%= link_to "Réinitialiser", reinit_path(@budget.id), class: "btn-perso-1", data: { confirm: 'Es-tu sûr(e)?' } %>
-        </div>
+      <div>
+        <%= link_to "Ajouter un payment", new_budget_payment_path(@budget.id), class: "btn-perso-1" %>
+      </div>
+      <div>
+        <%= link_to "Réinitialiser", reinit_path(@budget.id), class: "btn-perso-1", data: { confirm: 'Es-tu sûr(e)?' } %>
+      </div>
     </div>
-      <br>
-        <div style="position: relative; top: 5px;">
-          <strong> Total dépensé: </strong><%=@budget.total_cents%> €
-        </div>
-      <br>
+    <br>
+    <div style="position: relative; top: 5px;">
+      <strong> Total spent: </strong><%=@budget.total_cents%> €
+    </div>
+    <br>
 
-    <% @persons = [] %>
-    <strong>Balance: </strong><%UserBudget.where(budget_id: @budget.id).each do |n| %>
-      <% @persons << {name: n.user.name, dette: n.dette} %>
-    <% end %>
-
-    <% if @persons[0][:dette] > @persons[1][:dette]%>
-        <%=@persons[1][:name]%> doit <%= (@persons[0][:dette]) - (@persons[1][:dette]) %>€ à <%=@persons[0][:name]%>
-      <% elsif @persons[0][:dette] < @persons[1][:dette]%>
-        <%=@persons[0][:name]%> doit <%= (@persons[1][:dette]) - (@persons[0][:dette]) %>€ à <%=@persons[1][:name]%>
-      <% else %>
-        Vous ne vous devez rien !
-    <% end %>
+    <strong>Balance: </strong>
+    <%= @budget.debt_status(current_user) %>
 
     <br>
-    <strong>Participants :</strong>
-    <% @budget.users.each do |participant|%>
-      <%=participant.name%>
-    <% end %>
+    <strong>In this budget with you:</strong>
+    <%= @budget.other_participant(current_user)[0].capitalize %>
 
     <br>
     <br>
 
-    <% if Payment.where(budget_id: @budget.id).length > 0 %>
-    Derniers paiements :
+    <% if @budget.payments.length > 0 %>
+      Payments in this budget :
       <ul>
 
-      <%Payment.where(budget_id: @budget.id).sort_by { |p| p.updated_at }.reverse!.each do |payment| %>
+      <% @budget.payments.sort_by { |p| p.updated_at }.reverse!.each do |payment| %>
 
         <%= content_tag :div, id: payment.id do %>
 
           <% if params[:payment_id] && params[:payment_id].to_i == payment.id %>
-          <div class="card-payment pt-4" style="background-color: red !important;">
+          <div class="card-payment pt-4">
           <% else %>
           <div class="card-payment pt-4">
           <% end %>
-
-            <h1><%= payment.id  %></h1>
 
             <div class="display-flex">
               <div>
@@ -91,7 +77,15 @@
 
       </ul>
     <% else %>
-    Pas encore de paiement :-)
+      No payment yet 😊
     <% end %>
+    <script>
+      var urlParams = new URLSearchParams(window.location.search);
+      var id = urlParams.get('payment_id')
 
+      var selectedPayment = document.getElementById(id)
+      if (selectedPayment !== null ) {
+        selectedPayment.style = "background-color: green !important"
+      }
+    </script>
 </div>
