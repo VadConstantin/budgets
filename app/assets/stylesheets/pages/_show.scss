@@ -6,6 +6,7 @@
 .show-headers-container {
   max-width: 1000px;
   margin: auto;
+  padding: 0 50px;
 }
 
 .first-headers-part {
@@ -76,4 +77,57 @@
 
 .show-list-right-section {
   margin: 20px 0;
+}
+
+
+
+
+@media (max-width: 836px) {
+  .show-list-container {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+  }
+}
+
+@media (max-width: 650px) {
+  .show-list-container {
+    display: flex;
+    justify-content: center;
+    gap: 0px;
+    flex-direction: column;
+  }
+
+  .show-edit-button-container {
+    margin: 0 auto;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    transform: scale(0.6);
+    top: 0;
+    right: -40px;
+  }
+
+  .home-list-payment {
+    height: 120px;
+  }
+
+  .hundred-payments-container {
+    transform: scale(1.0);
+  }
+
+  .show-mobile-length {
+
+  }
+
+  .show-list-right-section {
+    margin: 0;
+  }
+
+  .go-up {
+    justify-content: flex-start !important;
+  }
+
+
 }

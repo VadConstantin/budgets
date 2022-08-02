@@ -33,7 +33,6 @@
 
 
     <% if @budget.payments.length > 0 %>
-      Payments in this budget :
 
       <%# ------------ OLD VERSION OF PAYMENTS ------------ %>
       <% if false %>
@@ -72,13 +71,13 @@
 
           <div class="list-title">All Payments</div>
           <% @budget.payments.sort_by { |p| p.updated_at }.reverse!.each do |payment| %>
-            <%= content_tag :div, id: payment.id, class: "show-payment-container" do %>
+            <%= content_tag :div, id: payment.id, class: "show-payment-container mobile-show-payment-container" do %>
               <div class="show-list-container">
                 <div class="show-list-left-section">
                   <%= link_to budget_path(payment.budget, payment_id: payment.id, anchor: payment.id) do %>
-                    <div class="home-list-payment make-link-fonts-white">
+                    <div class="home-list-payment make-link-fonts-white show-mobile-length">
 
-                      <div class="list-left-section">
+                      <div class="list-left-section go-up">
                         <div class="list-picture">
                         </div>
                         <div class="payer-receiver">
@@ -87,7 +86,7 @@
                         </div>
                       </div>
 
-                      <div class="list-right-section">
+                      <div class="list-right-section go-up">
                           <p id="list-amount">€<%= payment.montant_cents %></p>
                           <p id="list-comment"> <%= payment.small_comment %></p>
                       </div>
