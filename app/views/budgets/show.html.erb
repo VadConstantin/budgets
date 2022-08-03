@@ -4,33 +4,36 @@
 
     <div class="show-headers-container">
       <div class="display-flex-2 first-headers-part">
-        <%= link_to "<", root_path, class: "retour"%>
-        <h2 class="text-center" style="margin: 10px auto;"><strong><%=@budget.name%></strong></h2>
+        <%= link_to "<", root_path, class: "retour retour-show"%>
+        <h2 class="text-center titre-budget-show" style="margin: 10px auto 20px auto"><strong><%=@budget.name%></strong></h2>
+        <%= link_to "+", budget_path(@budget), method: :delete, data: { confirm: 'Are you sure you want to delete ' + @budget.name + ' budget ?' }, class: "retour delete-show"%>
+
       </div>
 
-      <br>
       <div class="display-flex">
         <div>
-          <%= link_to "Ajouter un payment", new_budget_payment_path(@budget.id), class: "btn-perso-1" %>
+          <%= link_to "Add a payment", new_budget_payment_path(@budget.id), class: "btn-perso-1" %>
         </div>
         <div>
-          <%= link_to "Réinitialiser", reinit_path(@budget.id), class: "btn-perso-1", data: { confirm: 'Es-tu sûr(e)?' } %>
+          <%= link_to "Reset budget", reinit_path(@budget.id), class: "btn-perso-1", data: { confirm: 'Are you sure you want to reset this budget ?' } %>
         </div>
       </div>
       <br>
       <div style="position: relative; top: 5px;">
-        <strong> Total spent: </strong><%=@budget.total_cents%> €
+        <p style="margin: 0">Total spent</p>
+        <span style="opacity: 0.5;"><%=@budget.total_cents%> € </span>
       </div>
       <br>
 
-      <strong>Balance: </strong>
-      <%= @budget.debt_status(current_user) %>
+      <p style="margin: 0">Balance</p>
+      <span style="opacity: 0.5;"> <%= @budget.debt_status(current_user) %></span>
 
       <br>
-      <strong>In this budget with you:</strong>
-      <%= @budget.other_participant(current_user)[0].capitalize %>
-    </div>
+      <br>
 
+      <p style="margin: 0">Participants</p>
+      <span style="opacity: 0.5;"> <%= @budget.other_participant(current_user)[0].capitalize %> and you </span>
+    </div>
 
     <% if @budget.payments.length > 0 %>
 
@@ -69,16 +72,16 @@
       <% if current_user %>
         <div class="hundred-payments-container">
 
-          <div class="list-title">All Payments</div>
-          <% @budget.payments.sort_by { |p| p.updated_at }.reverse!.each do |payment| %>
+          <div class="list-title mobile-list-title-headers">All Payments</div>
+          <% @budget.payments.last(50).sort_by { |p| p.updated_at }.reverse!.each do |payment| %>
             <%= content_tag :div, id: payment.id, class: "show-payment-container mobile-show-payment-container" do %>
               <div class="show-list-container">
                 <div class="show-list-left-section">
                   <%= link_to budget_path(payment.budget, payment_id: payment.id, anchor: payment.id) do %>
-                    <div class="home-list-payment make-link-fonts-white show-mobile-length">
+                    <div class="home-list-payment make-link-fonts-white show-mobile-length ">
 
-                      <div class="list-left-section go-up">
-                        <div class="list-picture">
+                      <div class="list-left-section go-up-left">
+                        <div class="list-picture no-list-picture">
                         </div>
                         <div class="payer-receiver">
                           <p id="list-sender"><%= payment.sender_name(current_user) %></p>
@@ -86,20 +89,31 @@
                         </div>
                       </div>
 
-                      <div class="list-right-section go-up">
+                      <div class="list-right-section go-up-right">
                           <p id="list-amount">€<%= payment.montant_cents %></p>
                           <p id="list-comment"> <%= payment.small_comment %></p>
                       </div>
 
                     </div>
                   <% end %>
-                  <div class="date"><%=payment.created_at.strftime("%d %B %Y à %H:%M")%></div>
+                  <div class="date-and-mobile-buttons">
+
+                    <div class="date"><%=payment.created_at.strftime("%d %B %Y à %H:%M")%></div>
+
+                    <%# ---------------CARD BUTTONS FOR MOBILE-------------- %>
+                    <div class="show-edit-button-container mobile-buttons">
+                      <%= link_to "Edit", edit_budget_payment_path(@budget, payment_id: payment.id), class: "show-edit-button padding-mobile-edit"%>
+                      <%= link_to "Delete", budget_payment_path(@budget, payment_id: payment.id), class: "show-edit-button padding-mobile-delete", method: :delete, data: { confirm: 'Confirm delete this payment ?' } %>
+                    </div>
+                    <%# ---------------CARD BUTTONS FOR MOBILE-------------- %>
+
+                  </div>
                 </div>
 
-                <div class="show-list-right-section">
+                <div class="show-buttons-section">
                   <div class="show-edit-button-container">
                     <%= link_to "Edit", edit_budget_payment_path(@budget, payment_id: payment.id), class: "show-edit-button"%>
-                    <%= link_to budget_payment_path(@budget, payment_id: payment.id), class: "show-delete-button", method: :delete, data: { confirm: 'Es-tu sûr(e)?' } do %>
+                    <%= link_to budget_payment_path(@budget, payment_id: payment.id), class: "show-delete-button", method: :delete, data: { confirm: 'Confirm delete this payment ?' } do %>
                       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" width="94.926px" height="94.926px" viewBox="0 0 94.926 94.926" style="enable-background:new 0 0 94.926 94.926;" xml:space="preserve">
                         <g>
                         <path d="M55.931,47.463L94.306,9.09c0.826-0.827,0.826-2.167,0-2.994L88.833,0.62C88.436,0.224,87.896,0,87.335,0   c-0.562,0-1.101,0.224-1.498,0.62L47.463,38.994L9.089,0.62c-0.795-0.795-2.202-0.794-2.995,0L0.622,6.096   c-0.827,0.827-0.827,2.167,0,2.994l38.374,38.373L0.622,85.836c-0.827,0.827-0.827,2.167,0,2.994l5.473,5.476   c0.397,0.396,0.936,0.62,1.498,0.62s1.1-0.224,1.497-0.62l38.374-38.374l38.374,38.374c0.397,0.396,0.937,0.62,1.498,0.62   s1.101-0.224,1.498-0.62l5.473-5.476c0.826-0.827,0.826-2.167,0-2.994L55.931,47.463z"/>
@@ -110,6 +124,7 @@
                     <% end %>
                   </div>
                 </div>
+
               </div>
 
             <% end %>
@@ -119,7 +134,9 @@
       <% end %>
 
     <% else %>
-      No payment yet 😊
+    <div style="text-align: center; margin-top: 80px; font-size: 22px">
+      <span style="opacity: 0.5;">No payment yet</span> 😊
+    </div>
     <% end %>
     <script>
       var urlParams = new URLSearchParams(window.location.search);
@@ -128,7 +145,6 @@
       var selectedPayment = document.getElementById(id)
       if (selectedPayment !== null ) {
 
-        // selectedPayment.classList.add("selected-baby")
         selectedPayment.childNodes[1].childNodes[1].childNodes[1].children[0].classList.add("selected-baby")
       }
     </script>

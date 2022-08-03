@@ -7,6 +7,10 @@
 
 }
 
+.devise-back-link {
+  color: #f4ffe5 !important;
+}
+
 .mobile-create-budget-button {
   display: none
 }
@@ -78,7 +82,7 @@
 
 .home-left-container {
   flex: 1;
-  background-color: #2b285d;
+  background-color: #1e1c3a;
   padding: 20px 5px 20px 5px;
   border-radius: 15px;
   max-width: 400px;
@@ -107,7 +111,7 @@
 
 .home-card-title {
   position: relative;
-  color: #4c239a;
+  color: #323054;
   text-align: center;
   font-weight: 700;
   font-size: 4vw;
@@ -121,7 +125,7 @@
 }
 
 #diff-budgets {
-  color: #f4ffe5
+  color: #5bffa5;
 }
 
 .home-cards-container {
@@ -156,7 +160,7 @@
 }
 
 .create-budget-button {
-  background-color: #f4ffe5;
+  background-color: #5affa5;
   padding: 8px 18px;
   align-items: center;
   border-radius: 9px;
@@ -215,7 +219,7 @@
 }
 
 .contentBx h5 {
-  color: #4d239a9b;
+  color: #323054;
 }
 
 .mobile-budgets-title {
@@ -303,7 +307,7 @@
 }
 
 .anim-background {
-  background-color: #2b285d;
+  background-color: #1e1c3a;
   width: 120%;
   height: 500px;
   position: absolute;
@@ -358,7 +362,7 @@
 }
 
 .hidden-flex-item {
-  background: #60649a;
+  background: #60649a47;
   padding: 20px;
   border-radius: 10px;
   flex: 1;
@@ -371,7 +375,7 @@
 }
 
 .hidden-flex-item-2 {
-  background: #60649a;
+  background: #60649a47;
   padding: 20px;
   border-radius: 10px;
   flex: 1;
@@ -425,7 +429,7 @@
   color: #f4ffe5;
   width: 100%;
   position: relative;
-  background-color: #2b285d;
+  background-color: #1e1c3a;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   transform: scale(0.9);
@@ -446,7 +450,7 @@
   width: 100%;
   padding: 0 20px 30px;
   position: relative;
-  background-color: #2b285d;
+  background-color: #1e1c3a;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   min-height: 80vh;
@@ -495,7 +499,7 @@
   padding: 20px 0 0 0;
   font-size: 20px;
   letter-spacing: -1px;
-  color: #f4ffe5;
+  color: #5bffa5;
 }
 
 #list-sender {
@@ -762,9 +766,9 @@
     display: block;
     text-align: center;
     padding-top: 30px;
-    font-size: 4.4vw;
+    font-size: 20px;
     letter-spacing: -1px;
-    color: #f4ffe5;
+    color: #5bffa5;
   }
 
   .home-card-title {
@@ -816,6 +820,10 @@
     top: -49px !important;
     text-align: center;
     width: 100%;
+    color: #f4ffe5 !important;
+  }
+
+  .devise-back-link a {
     color: #f4ffe5 !important;
   }
 

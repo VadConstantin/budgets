@@ -1,28 +1,35 @@
-<br>
-<br>
-<div class="container">
-  <div class="row justify-content-center">
-      <div class="col-12 col-md-10 col-lg-8">
-        <div class="row justify-content-center mb-3">
-          <div class="card mb-4">
-            <div class="card-body">
-                <div class="h2 mt-3">Ajoute ton paiement !</div>
-                  <div class="info-log">
-                    <%= simple_form_for [@budget, @payment] do |f| %>
-                      <%= f.input :payeurs, collection: @participants, checked: "", legend_tag: true, as: :radio_buttons, label: "Qui a payé ?" %>
-                      <%= f.input :montant_cents, placeholder: "Quel est le montant?", label: "Montant" %>
-                      <%= f.input :receveurs, collection: @participants, checked: "", legend_tag: true, as: :check_boxes, label: "Pour qui ?" %>
-                      <%= f.input :commentaire, placeholder: "Description ?", label: "Description" %>
-                      <div class="center">
-                          <%= f.button :submit, "Validez le paiement", class:"btn-primary" %>
-                      </div>
-                    <% end %>
-                  </div>
-                </div>
+
+<% if false %>
+
+ <%# ------coder ici la condition si le user ne fait pas partie du budget type "@budget.contains_user?(current_user)" ----------- %>
+
+  <div class="no-access-message-container">
+    <h4 class="text-center"> You reached the maximum amount of 4 budgets. Delete a budget before creating a new one !</h4>
+    <%= link_to "Go Back", :back, style: "position: relative; top: 20px; text-align: center", class:"devise-back-link text-center"%>
+  </div>
+
+  <%# ------coder ici la condition si le user ne fait pas partie du budget type "@budget.contains_user?(current_user)" ----------- %>
+
+<% else %>
+
+  <div class="budget-form-container">
+    <div class="devise-card">
+      <div class="card-body">
+        <div class="h2 mt-3">Create your budget !</div>
+        <div class="info-log">
+          <%= simple_form_for [@budget, @payment] do |f| %>
+            <%= f.input :payeurs, collection: @participants, checked: "", legend_tag: true, as: :radio_buttons, label: "Who paid ?" %>
+            <%= f.input :montant_cents, placeholder: "Amount ?", label: "Montant" %>
+            <%= f.input :receveurs, collection: @participants, checked: "", legend_tag: true, as: :check_boxes, label: "For who ?" %>
+            <%= f.input :commentaire, placeholder: "Description ?", label: "Description" %>
+            <div class="form-actions display-flex-login-buttons mt-5">
+                <%= f.button :submit, "Validate Payment", class:"btn-primary" %>
             </div>
-            <%=link_to " < retour", budget_path(@budget) %>
-          </div>
+          <% end %>
         </div>
       </div>
+    </div>
+    <%= link_to "Go Back", :back, style: "position: relative; top: 20px; text-align: center", class:"devise-back-link"%>
   </div>
-</div>
+
+<% end %>

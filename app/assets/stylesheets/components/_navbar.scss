@@ -17,15 +17,19 @@
 
 .nav-link {
   font-weight: 300;
-  color: #691eac;
+  color: #2a2848;
 }
 
 .navbar-light .navbar-nav .active>.nav-link {
-  color: #691eac;
+  color: #2a2848;
   font-weight: 300;
   padding-right: 30px;
 }
 
 .navbar a {
-  color: #691eac;
+  color: #2a2848;;
+}
+
+.navbar-toggler {
+  border: none !important
 }

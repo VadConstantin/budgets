@@ -71,7 +71,7 @@
                   <div class="content">
                     <div class="contentBx">
                       <h3 class="home-card-title"><%= budget.name %></h3>
-                      <h5 class="owe-content"><%= budget.debt_status(current_user) %></h5>
+                      <h5 class="owe-content"><%#= budget.debt_status(current_user) %></h5>
                     </div>
                   </div>
                   <ul class="sci">
@@ -156,7 +156,7 @@
   <%# ------------------------- PAYMENTS LIST / MOBILE -------------------------- %>
   <% if current_user %>
     <div class="last-payments-container">
-      <div class="list-title">Last Payments</div>
+      <div class="list-title">Overall Payments</div>
       <% current_user.last_payments.each do |payment| %>
 
         <%= link_to budget_path(payment.budget, payment_id: payment.id, anchor: payment.id) do %>
