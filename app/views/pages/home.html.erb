@@ -157,7 +157,7 @@
   <% if current_user %>
     <div class="last-payments-container">
       <div class="list-title">Overall Payments</div>
-      <% current_user.last_payments.sort_by { |p| p.updated_at }.reverse!.each do |payment| %>
+      <% current_user.last_payments.each do |payment| %>
 
         <%= link_to budget_path(payment.budget, payment_id: payment.id, anchor: payment.id) do %>
           <div class="home-list-payment make-link-fonts-white">
